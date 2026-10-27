@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "実行するコマンド (validate=クエリ検証 / run=集計と公開 / sample=精度検証用サンプル)"
+        description: "実行するコマンド (validate=クエリ検証 / run=集計 / diagnose=一致論文のsubfield分布 / sample=精度検証用サンプル)"
         type: choice
-        options: [validate, run, sample]
+        options: [validate, run, diagnose, sample]
         default: validate
       publish_pages:
         description: "run のとき GitHub Pages に公開する(既定はオフ。公開範囲を確認してから有効にする)"

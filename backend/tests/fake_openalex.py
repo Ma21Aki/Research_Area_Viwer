@@ -13,6 +13,9 @@ import requests
 
 TARGET_SUBFIELD = "subfields/2613"
 OTHER_SUBFIELD = "subfields/9999"
+SUBFIELD_NAMES = {TARGET_SUBFIELD: "Statistics and Probability", OTHER_SUBFIELD: "Control and Systems Engineering"}
+FIELD_OF = {TARGET_SUBFIELD: "fields/26", OTHER_SUBFIELD: "fields/22"}
+FIELD_NAMES = {"fields/26": "Mathematics", "fields/22": "Engineering"}
 
 
 def make_corpus() -> list[dict]:
@@ -118,14 +121,7 @@ class FakeOpenAlex:
         if "search.title" in p:
             works = [w for w in works if self._search(w["title"], p["search.title"])]
         if "group_by" in p:
-            counts: dict[int, int] = {}
-            for w in works:
-                counts[w["publication_year"]] = counts.get(w["publication_year"], 0) + 1
-            groups = [
-                {"key": str(y), "key_display_name": str(y), "count": c}
-                for y, c in sorted(counts.items())
-            ]
-            return {"meta": {"count": len(groups)}, "group_by": groups}
+            return self._group_by(works, p["group_by"])
         per_page = int(p.get("per_page", 25))
         meta = {"count": len(works)}
         if "sample" in p:
@@ -140,6 +136,28 @@ class FakeOpenAlex:
             meta["next_cursor"] = str(offset + per_page) if more else None
             return {"meta": meta, "results": [self._select(w, p) for w in chunk]}
         return {"meta": meta, "results": [self._select(w, p) for w in works[:per_page]]}
+
+    @staticmethod
+    def _group_by(works: list[dict], key: str) -> dict:
+        def keyof(w):
+            if key == "publication_year":
+                return str(w["publication_year"]), str(w["publication_year"])
+            sub = w["subfield"]
+            if key == "primary_topic.subfield.id":
+                return f"https://openalex.org/{sub}", SUBFIELD_NAMES[sub]
+            if key == "primary_topic.field.id":
+                f = FIELD_OF[sub]
+                return f"https://openalex.org/{f}", FIELD_NAMES[f]
+            raise ValueError(key)
+
+        counts: dict[tuple, int] = {}
+        for w in works:
+            counts[keyof(w)] = counts.get(keyof(w), 0) + 1
+        groups = [
+            {"key": k, "key_display_name": name, "count": c}
+            for (k, name), c in sorted(counts.items())
+        ]
+        return {"meta": {"count": len(groups)}, "group_by": groups}
 
     @staticmethod
     def _select(w: dict, p: dict) -> dict:
