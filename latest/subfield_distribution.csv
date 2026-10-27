@@ -1,0 +1,804 @@
+﻿field,level,rank,topic_id,topic_name,count,share,is_target
+SSM,subfield,1,subfields/2207,Control and Systems Engineering,1432,0.2118970109499852,0
+SSM,subfield,2,subfields/1702,Artificial Intelligence,900,0.1331754957087896,0
+SSM,subfield,3,subfields/2613,Statistics and Probability,525,0.07768570583012725,1
+SSM,subfield,4,subfields/2208,Electrical and Electronic Engineering,515,0.07620597810002959,0
+SSM,subfield,5,subfields/1707,Computer Vision and Pattern Recognition,427,0.06318437407517016,0
+SSM,subfield,6,subfields/1803,Management Science and Operations Research,190,0.02811482687185558,0
+SSM,subfield,7,subfields/1711,Signal Processing,151,0.022343888724474698,0
+SSM,subfield,8,subfields/2805,Cognitive Neuroscience,142,0.021012133767386802,0
+SSM,subfield,9,subfields/2003,Finance,138,0.020420242675347738,0
+SSM,subfield,10,subfields/2214,Media Technology,128,0.018940514945250075,0
+SSM,subfield,11,subfields/2002,Economics and Econometrics,126,0.01864456939923054,0
+SSM,subfield,12,subfields/2604,Applied Mathematics,124,0.01834862385321101,0
+SSM,subfield,13,subfields/2202,Aerospace Engineering,115,0.017016868896123114,0
+SSM,subfield,14,subfields/2205,Civil and Structural Engineering,112,0.016572950577093813,0
+SSM,subfield,15,subfields/2000,"General Economics, Econometrics and Finance",111,0.01642497780408405,0
+SSM,subfield,16,subfields/2306,Global and Planetary Change,105,0.015537141166025451,0
+SSM,subfield,17,subfields/2303,Ecology,104,0.015389168393015686,0
+SSM,subfield,18,subfields/2206,Computational Mechanics,76,0.011245930748742231,0
+SSM,subfield,19,subfields/2210,Mechanical Engineering,73,0.010802012429712933,0
+SSM,subfield,20,subfields/1312,Molecular Biology,70,0.010358094110683634,0
+SSM,subfield,21,subfields/2739,"Public Health, Environmental and Occupational Health",59,0.008730393607576206,0
+SSM,subfield,22,subfields/2203,Automotive Engineering,58,0.00858242083456644,0
+SSM,subfield,23,subfields/2215,Building and Construction,58,0.00858242083456644,0
+SSM,subfield,24,subfields/2212,Ocean Engineering,57,0.008434448061556674,0
+SSM,subfield,25,subfields/2213,"Safety, Risk, Reliability and Quality",56,0.008286475288546907,0
+SSM,subfield,26,subfields/3109,Statistical and Nonlinear Physics,54,0.007990529742527374,0
+SSM,subfield,27,subfields/2204,Biomedical Engineering,50,0.00739863865048831,0
+SSM,subfield,28,subfields/2209,Industrial and Manufacturing Engineering,47,0.0069547203314590115,0
+SSM,subfield,29,subfields/1902,Atmospheric Science,43,0.006362829239419947,0
+SSM,subfield,30,subfields/2305,Environmental Engineering,40,0.005918910920390648,0
+SSM,subfield,31,subfields/2309,Nature and Landscape Conservation,38,0.0056229653743711154,0
+SSM,subfield,32,subfields/2705,Cardiology and Cardiovascular Medicine,33,0.004883101509322285,0
+SSM,subfield,33,subfields/2312,Water Science and Technology,31,0.0045871559633027525,0
+SSM,subfield,34,subfields/3205,Experimental and Cognitive Psychology,30,0.004439183190292986,0
+SSM,subfield,35,subfields/1705,Computer Networks and Communications,29,0.00429121041728322,0
+SSM,subfield,36,subfields/1703,Computational Theory and Mathematics,28,0.004143237644273453,0
+SSM,subfield,37,subfields/2611,Modeling and Simulation,28,0.004143237644273453,0
+SSM,subfield,38,subfields/1804,"Statistics, Probability and Uncertainty",27,0.003995264871263687,0
+SSM,subfield,39,subfields/1110,Plant Science,24,0.003551346552234389,0
+SSM,subfield,40,subfields/2741,"Radiology, Nuclear Medicine and Imaging",22,0.0032554010062148565,0
+SSM,subfield,41,subfields/3103,Astronomy and Astrophysics,22,0.0032554010062148565,0
+SSM,subfield,42,subfields/1710,Information Systems,19,0.0028114826871855577,0
+SSM,subfield,43,subfields/2105,"Renewable Energy, Sustainability and the Environment",16,0.0023675643681562593,0
+SSM,subfield,44,subfields/3313,Transportation,15,0.002219591595146493,0
+SSM,subfield,45,subfields/3317,Demography,14,0.0020716188221367266,0
+SSM,subfield,46,subfields/2211,Mechanics of Materials,13,0.0019236460491269607,0
+SSM,subfield,47,subfields/3312,Sociology and Political Science,12,0.0017756732761171944,0
+SSM,subfield,48,subfields/1910,Oceanography,11,0.0016277005031074283,0
+SSM,subfield,49,subfields/2738,Psychiatry and Mental health,11,0.0016277005031074283,0
+SSM,subfield,50,subfields/1102,Agronomy and Crop Science,9,0.0013317549570878958,0
+SSM,subfield,51,subfields/1708,Hardware and Architecture,9,0.0013317549570878958,0
+SSM,subfield,52,subfields/2505,Materials Chemistry,9,0.0013317549570878958,0
+SSM,subfield,53,subfields/2713,Epidemiology,9,0.0013317549570878958,0
+SSM,subfield,54,subfields/2809,Sensory Systems,9,0.0013317549570878958,0
+SSM,subfield,55,subfields/3107,"Atomic and Molecular Physics, and Optics",9,0.0013317549570878958,0
+SSM,subfield,56,subfields/1402,Accounting,8,0.0011837821840781297,0
+SSM,subfield,57,subfields/1404,Management Information Systems,7,0.0010358094110683633,0
+SSM,subfield,58,subfields/2307,"Health, Toxicology and Mutagenesis",7,0.0010358094110683633,0
+SSM,subfield,59,subfields/2746,Surgery,7,0.0010358094110683633,0
+SSM,subfield,60,subfields/2808,Neurology,7,0.0010358094110683633,0
+SSM,subfield,61,subfields/1406,Marketing,6,0.0008878366380585972,0
+SSM,subfield,62,subfields/1709,Human-Computer Interaction,6,0.0008878366380585972,0
+SSM,subfield,63,subfields/2712,"Endocrinology, Diabetes and Metabolism",6,0.0008878366380585972,0
+SSM,subfield,64,subfields/3320,Political Science and International Relations,6,0.0008878366380585972,0
+SSM,subfield,65,subfields/2612,Numerical Analysis,5,0.000739863865048831,0
+SSM,subfield,66,subfields/2730,Oncology,5,0.000739863865048831,0
+SSM,subfield,67,subfields/2737,Physiology,5,0.000739863865048831,0
+SSM,subfield,68,subfields/3207,Social Psychology,5,0.000739863865048831,0
+SSM,subfield,69,subfields/3404,Small Animals,5,0.000739863865048831,0
+SSM,subfield,70,subfields/1111,Soil Science,4,0.0005918910920390648,0
+SSM,subfield,71,subfields/1311,Genetics,4,0.0005918910920390648,0
+SSM,subfield,72,subfields/1712,Software,4,0.0005918910920390648,0
+SSM,subfield,73,subfields/2102,Energy Engineering and Power Technology,4,0.0005918910920390648,0
+SSM,subfield,74,subfields/2735,"Pediatrics, Perinatology and Child Health",4,0.0005918910920390648,0
+SSM,subfield,75,subfields/1103,Animal Science and Zoology,3,0.0004439183190292986,0
+SSM,subfield,76,subfields/1105,"Ecology, Evolution, Behavior and Systematics",3,0.0004439183190292986,0
+SSM,subfield,77,subfields/1407,Organizational Behavior and Human Resource Management,3,0.0004439183190292986,0
+SSM,subfield,78,subfields/1607,Spectroscopy,3,0.0004439183190292986,0
+SSM,subfield,79,subfields/1800,General Decision Sciences,3,0.0004439183190292986,0
+SSM,subfield,80,subfields/1908,Geophysics,3,0.0004439183190292986,0
+SSM,subfield,81,subfields/2304,Environmental Chemistry,3,0.0004439183190292986,0
+SSM,subfield,82,subfields/2308,"Management, Monitoring, Policy and Law",3,0.0004439183190292986,0
+SSM,subfield,83,subfields/2310,Pollution,3,0.0004439183190292986,0
+SSM,subfield,84,subfields/2725,Infectious Diseases,3,0.0004439183190292986,0
+SSM,subfield,85,subfields/3106,Nuclear and High Energy Physics,3,0.0004439183190292986,0
+SSM,subfield,86,subfields/3300,General Social Sciences,3,0.0004439183190292986,0
+SSM,subfield,87,subfields/1106,Food Science,2,0.0002959455460195324,0
+SSM,subfield,88,subfields/1109,Insect Science,2,0.0002959455460195324,0
+SSM,subfield,89,subfields/1304,Biophysics,2,0.0002959455460195324,0
+SSM,subfield,90,subfields/1306,Cancer Research,2,0.0002959455460195324,0
+SSM,subfield,91,subfields/1706,Computer Science Applications,2,0.0002959455460195324,0
+SSM,subfield,92,subfields/1904,Earth-Surface Processes,2,0.0002959455460195324,0
+SSM,subfield,93,subfields/1911,Paleontology,2,0.0002959455460195324,0
+SSM,subfield,94,subfields/2311,Waste Management and Disposal,2,0.0002959455460195324,0
+SSM,subfield,95,subfields/2403,Immunology,2,0.0002959455460195324,0
+SSM,subfield,96,subfields/2504,"Electronic, Optical and Magnetic Materials",2,0.0002959455460195324,0
+SSM,subfield,97,subfields/2610,Mathematical Physics,2,0.0002959455460195324,0
+SSM,subfield,98,subfields/2707,Complementary and alternative medicine,2,0.0002959455460195324,0
+SSM,subfield,99,subfields/2714,Family Practice,2,0.0002959455460195324,0
+SSM,subfield,100,subfields/2728,Neurology,2,0.0002959455460195324,0
+SSM,subfield,101,subfields/2734,Pathology and Forensic Medicine,2,0.0002959455460195324,0
+SSM,subfield,102,subfields/2743,Reproductive Medicine,2,0.0002959455460195324,0
+SSM,subfield,103,subfields/3108,Radiation,2,0.0002959455460195324,0
+SSM,subfield,104,subfields/3311,Safety Research,2,0.0002959455460195324,0
+SSM,subfield,105,subfields/1100,General Agricultural and Biological Sciences,1,0.0001479727730097662,0
+SSM,subfield,106,subfields/1305,Biotechnology,1,0.0001479727730097662,0
+SSM,subfield,107,subfields/1309,Developmental Biology,1,0.0001479727730097662,0
+SSM,subfield,108,subfields/1405,Management of Technology and Innovation,1,0.0001479727730097662,0
+SSM,subfield,109,subfields/1408,Strategy and Management,1,0.0001479727730097662,0
+SSM,subfield,110,subfields/1507,Fluid Flow and Transfer Processes,1,0.0001479727730097662,0
+SSM,subfield,111,subfields/1602,Analytical Chemistry,1,0.0001479727730097662,0
+SSM,subfield,112,subfields/2302,Ecological Modeling,1,0.0001479727730097662,0
+SSM,subfield,113,subfields/2406,Virology,1,0.0001479727730097662,0
+SSM,subfield,114,subfields/2703,Anesthesiology and Pain Medicine,1,0.0001479727730097662,0
+SSM,subfield,115,subfields/2716,Genetics,1,0.0001479727730097662,0
+SSM,subfield,116,subfields/2718,Health Informatics,1,0.0001479727730097662,0
+SSM,subfield,117,subfields/2740,Pulmonary and Respiratory Medicine,1,0.0001479727730097662,0
+SSM,subfield,118,subfields/3004,Pharmacology,1,0.0001479727730097662,0
+SSM,subfield,119,subfields/3204,Developmental and Educational Psychology,1,0.0001479727730097662,0
+SSM,subfield,120,subfields/3321,Public Administration,1,0.0001479727730097662,0
+SSM,subfield,121,subfields/3600,General Health Professions,1,0.0001479727730097662,0
+SSM,subfield,122,subfields/3605,Health Information Management,1,0.0001479727730097662,0
+SSM,field,1,fields/22,Engineering,2790,0.41284403669724773,0
+SSM,field,2,fields/17,Computer Science,1575,0.23305711749038177,0
+SSM,field,3,fields/26,Mathematics,684,0.10121337673868008,0
+SSM,field,4,fields/20,"Economics, Econometrics and Finance",375,0.05548978987866233,0
+SSM,field,5,fields/23,Environmental Science,337,0.04986682450429121,0
+SSM,field,6,fields/18,Decision Sciences,220,0.032554010062148565,0
+SSM,field,7,fields/27,Medicine,178,0.026339153595738383,0
+SSM,field,8,fields/28,Neuroscience,158,0.02337969813554306,0
+SSM,field,9,fields/31,Physics and Astronomy,90,0.013317549570878958,0
+SSM,field,10,fields/13,"Biochemistry, Genetics and Molecular Biology",80,0.011837821840781295,0
+SSM,field,11,fields/19,Earth and Planetary Sciences,61,0.009026339153595738,0
+SSM,field,12,fields/33,Social Sciences,53,0.007842556969517609,0
+SSM,field,13,fields/11,Agricultural and Biological Sciences,48,0.007102693104468778,0
+SSM,field,14,fields/32,Psychology,36,0.005327019828351583,0
+SSM,field,15,fields/14,"Business, Management and Accounting",26,0.0038472920982539215,0
+SSM,field,16,fields/21,Energy,20,0.002959455460195324,0
+SSM,field,17,fields/25,Materials Science,11,0.0016277005031074283,0
+SSM,field,18,fields/34,Veterinary,5,0.000739863865048831,0
+SSM,field,19,fields/16,Chemistry,4,0.0005918910920390648,0
+SSM,field,20,fields/24,Immunology and Microbiology,3,0.0004439183190292986,0
+SSM,field,21,fields/36,Health Professions,2,0.0002959455460195324,0
+SSM,field,22,fields/15,Chemical Engineering,1,0.0001479727730097662,0
+SSM,field,23,fields/30,"Pharmacology, Toxicology and Pharmaceutics",1,0.0001479727730097662,0
+HierBayes,subfield,1,subfields/2613,Statistics and Probability,1890,0.27761457109283194,1
+HierBayes,subfield,2,subfields/2002,Economics and Econometrics,287,0.042156286721504115,0
+HierBayes,subfield,3,subfields/1702,Artificial Intelligence,270,0.03965922444183314,0
+HierBayes,subfield,4,subfields/3304,Education,186,0.027320799059929495,0
+HierBayes,subfield,5,subfields/1803,Management Science and Operations Research,169,0.02482373678025852,0
+HierBayes,subfield,6,subfields/2213,"Safety, Risk, Reliability and Quality",166,0.02438307873090482,0
+HierBayes,subfield,7,subfields/2805,Cognitive Neuroscience,164,0.02408930669800235,0
+HierBayes,subfield,8,subfields/3312,Sociology and Political Science,163,0.023942420681551117,0
+HierBayes,subfield,9,subfields/3207,Social Psychology,129,0.018948296122209166,0
+HierBayes,subfield,10,subfields/3205,Experimental and Cognitive Psychology,120,0.01762632197414806,0
+HierBayes,subfield,11,subfields/1407,Organizational Behavior and Human Resource Management,117,0.01718566392479436,0
+HierBayes,subfield,12,subfields/2306,Global and Planetary Change,103,0.015129259694477086,0
+HierBayes,subfield,13,subfields/2739,"Public Health, Environmental and Occupational Health",100,0.014688601645123384,0
+HierBayes,subfield,14,subfields/3103,Astronomy and Astrophysics,97,0.014247943595769683,0
+HierBayes,subfield,15,subfields/2205,Civil and Structural Engineering,95,0.013954171562867214,0
+HierBayes,subfield,16,subfields/1312,Molecular Biology,91,0.01336662749706228,0
+HierBayes,subfield,17,subfields/1804,"Statistics, Probability and Uncertainty",90,0.013219741480611046,0
+HierBayes,subfield,18,subfields/1707,Computer Vision and Pattern Recognition,87,0.012779083431257344,0
+HierBayes,subfield,19,subfields/1311,Genetics,73,0.01072267920094007,0
+HierBayes,subfield,20,subfields/3306,Health,68,0.0099882491186839,0
+HierBayes,subfield,21,subfields/2312,Water Science and Technology,65,0.009547591069330199,0
+HierBayes,subfield,22,subfields/3203,Clinical Psychology,65,0.009547591069330199,0
+HierBayes,subfield,23,subfields/2309,Nature and Landscape Conservation,60,0.00881316098707403,0
+HierBayes,subfield,24,subfields/1406,Marketing,59,0.008666274970622797,0
+HierBayes,subfield,25,subfields/3320,Political Science and International Relations,55,0.00807873090481786,0
+HierBayes,subfield,26,subfields/3600,General Health Professions,55,0.00807873090481786,0
+HierBayes,subfield,27,subfields/2303,Ecology,51,0.007491186839012926,0
+HierBayes,subfield,28,subfields/2737,Physiology,51,0.007491186839012926,0
+HierBayes,subfield,29,subfields/2725,Infectious Diseases,48,0.007050528789659225,0
+HierBayes,subfield,30,subfields/2735,"Pediatrics, Perinatology and Child Health",46,0.006756756756756757,0
+HierBayes,subfield,31,subfields/1710,Information Systems,44,0.006462984723854289,0
+HierBayes,subfield,32,subfields/1902,Atmospheric Science,44,0.006462984723854289,0
+HierBayes,subfield,33,subfields/3313,Transportation,44,0.006462984723854289,0
+HierBayes,subfield,34,subfields/1908,Geophysics,42,0.006169212690951821,0
+HierBayes,subfield,35,subfields/2307,"Health, Toxicology and Mutagenesis",42,0.006169212690951821,0
+HierBayes,subfield,36,subfields/2207,Control and Systems Engineering,38,0.005581668625146886,0
+HierBayes,subfield,37,subfields/2208,Electrical and Electronic Engineering,37,0.005434782608695652,0
+HierBayes,subfield,38,subfields/2210,Mechanical Engineering,37,0.005434782608695652,0
+HierBayes,subfield,39,subfields/1800,General Decision Sciences,36,0.005287896592244419,0
+HierBayes,subfield,40,subfields/2505,Materials Chemistry,36,0.005287896592244419,0
+HierBayes,subfield,41,subfields/2738,Psychiatry and Mental health,36,0.005287896592244419,0
+HierBayes,subfield,42,subfields/2215,Building and Construction,35,0.0051410105757931845,0
+HierBayes,subfield,43,subfields/2713,Epidemiology,35,0.0051410105757931845,0
+HierBayes,subfield,44,subfields/2705,Cardiology and Cardiovascular Medicine,34,0.00499412455934195,0
+HierBayes,subfield,45,subfields/3204,Developmental and Educational Psychology,34,0.00499412455934195,0
+HierBayes,subfield,46,subfields/1408,Strategy and Management,33,0.004847238542890717,0
+HierBayes,subfield,47,subfields/2211,Mechanics of Materials,33,0.004847238542890717,0
+HierBayes,subfield,48,subfields/2305,Environmental Engineering,33,0.004847238542890717,0
+HierBayes,subfield,49,subfields/2202,Aerospace Engineering,31,0.0045534665099882495,0
+HierBayes,subfield,50,subfields/1712,Software,30,0.004406580493537015,0
+HierBayes,subfield,51,subfields/1404,Management Information Systems,28,0.004112808460634548,0
+HierBayes,subfield,52,subfields/3317,Demography,28,0.004112808460634548,0
+HierBayes,subfield,53,subfields/1703,Computational Theory and Mathematics,27,0.003965922444183314,0
+HierBayes,subfield,54,subfields/2206,Computational Mechanics,27,0.003965922444183314,0
+HierBayes,subfield,55,subfields/3311,Safety Research,27,0.003965922444183314,0
+HierBayes,subfield,56,subfields/2741,"Radiology, Nuclear Medicine and Imaging",26,0.00381903642773208,0
+HierBayes,subfield,57,subfields/2611,Modeling and Simulation,25,0.003672150411280846,0
+HierBayes,subfield,58,subfields/3318,Gender Studies,25,0.003672150411280846,0
+HierBayes,subfield,59,subfields/3605,Health Information Management,24,0.0035252643948296123,0
+HierBayes,subfield,60,subfields/1110,Plant Science,22,0.0032314923619271444,0
+HierBayes,subfield,61,subfields/2730,Oncology,22,0.0032314923619271444,0
+HierBayes,subfield,62,subfields/1705,Computer Networks and Communications,21,0.0030846063454759106,0
+HierBayes,subfield,63,subfields/1802,Information Systems and Management,21,0.0030846063454759106,0
+HierBayes,subfield,64,subfields/2610,Mathematical Physics,20,0.002937720329024677,0
+HierBayes,subfield,65,subfields/1711,Signal Processing,19,0.002790834312573443,0
+HierBayes,subfield,66,subfields/2916,Nutrition and Dietetics,19,0.002790834312573443,0
+HierBayes,subfield,67,subfields/2746,Surgery,18,0.0026439482961222094,0
+HierBayes,subfield,68,subfields/2922,Research and Theory,18,0.0026439482961222094,0
+HierBayes,subfield,69,subfields/3614,Radiological and Ultrasound Technology,18,0.0026439482961222094,0
+HierBayes,subfield,70,subfields/2214,Media Technology,17,0.002497062279670975,0
+HierBayes,subfield,71,subfields/2308,"Management, Monitoring, Policy and Law",17,0.002497062279670975,0
+HierBayes,subfield,72,subfields/3315,Communication,17,0.002497062279670975,0
+HierBayes,subfield,73,subfields/3506,Periodontics,17,0.002497062279670975,0
+HierBayes,subfield,74,subfields/1402,Accounting,16,0.0023501762632197414,0
+HierBayes,subfield,75,subfields/3109,Statistical and Nonlinear Physics,16,0.0023501762632197414,0
+HierBayes,subfield,76,subfields/2204,Biomedical Engineering,15,0.0022032902467685076,0
+HierBayes,subfield,77,subfields/2740,Pulmonary and Respiratory Medicine,14,0.002056404230317274,0
+HierBayes,subfield,78,subfields/1111,Soil Science,13,0.00190951821386604,0
+HierBayes,subfield,79,subfields/2212,Ocean Engineering,13,0.00190951821386604,0
+HierBayes,subfield,80,subfields/2203,Automotive Engineering,12,0.0017626321974148062,0
+HierBayes,subfield,81,subfields/2304,Environmental Chemistry,12,0.0017626321974148062,0
+HierBayes,subfield,82,subfields/2712,"Endocrinology, Diabetes and Metabolism",12,0.0017626321974148062,0
+HierBayes,subfield,83,subfields/1102,Agronomy and Crop Science,11,0.0016157461809635722,0
+HierBayes,subfield,84,subfields/2003,Finance,11,0.0016157461809635722,0
+HierBayes,subfield,85,subfields/2302,Ecological Modeling,11,0.0016157461809635722,0
+HierBayes,subfield,86,subfields/1106,Food Science,10,0.0014688601645123384,0
+HierBayes,subfield,87,subfields/1910,Oceanography,10,0.0014688601645123384,0
+HierBayes,subfield,88,subfields/2209,Industrial and Manufacturing Engineering,10,0.0014688601645123384,0
+HierBayes,subfield,89,subfields/2604,Applied Mathematics,10,0.0014688601645123384,0
+HierBayes,subfield,90,subfields/2732,Orthopedics and Sports Medicine,10,0.0014688601645123384,0
+HierBayes,subfield,91,subfields/3616,Speech and Hearing,10,0.0014688601645123384,0
+HierBayes,subfield,92,subfields/1405,Management of Technology and Innovation,9,0.0013219741480611047,0
+HierBayes,subfield,93,subfields/2000,"General Economics, Econometrics and Finance",9,0.0013219741480611047,0
+HierBayes,subfield,94,subfields/2310,Pollution,9,0.0013219741480611047,0
+HierBayes,subfield,95,subfields/1706,Computer Science Applications,8,0.0011750881316098707,0
+HierBayes,subfield,96,subfields/1708,Hardware and Architecture,8,0.0011750881316098707,0
+HierBayes,subfield,97,subfields/1904,Earth-Surface Processes,8,0.0011750881316098707,0
+HierBayes,subfield,98,subfields/2405,Parasitology,8,0.0011750881316098707,0
+HierBayes,subfield,99,subfields/2742,Rehabilitation,8,0.0011750881316098707,0
+HierBayes,subfield,100,subfields/1100,General Agricultural and Biological Sciences,7,0.001028202115158637,0
+HierBayes,subfield,101,subfields/1105,"Ecology, Evolution, Behavior and Systematics",7,0.001028202115158637,0
+HierBayes,subfield,102,subfields/1911,Paleontology,7,0.001028202115158637,0
+HierBayes,subfield,103,subfields/2720,Hematology,7,0.001028202115158637,0
+HierBayes,subfield,104,subfields/3321,Public Administration,7,0.001028202115158637,0
+HierBayes,subfield,105,subfields/3604,Emergency Medical Services,7,0.001028202115158637,0
+HierBayes,subfield,106,subfields/3609,Occupational Therapy,7,0.001028202115158637,0
+HierBayes,subfield,107,subfields/1607,Spectroscopy,6,0.0008813160987074031,0
+HierBayes,subfield,108,subfields/2729,Obstetrics and Gynecology,6,0.0008813160987074031,0
+HierBayes,subfield,109,subfields/2745,Rheumatology,6,0.0008813160987074031,0
+HierBayes,subfield,110,subfields/3106,Nuclear and High Energy Physics,6,0.0008813160987074031,0
+HierBayes,subfield,111,subfields/3612,"Physical Therapy, Sports Therapy and Rehabilitation",6,0.0008813160987074031,0
+HierBayes,subfield,112,subfields/1109,Insect Science,5,0.0007344300822561692,0
+HierBayes,subfield,113,subfields/1305,Biotechnology,5,0.0007344300822561692,0
+HierBayes,subfield,114,subfields/1306,Cancer Research,5,0.0007344300822561692,0
+HierBayes,subfield,115,subfields/1709,Human-Computer Interaction,5,0.0007344300822561692,0
+HierBayes,subfield,116,subfields/2105,"Renewable Energy, Sustainability and the Environment",5,0.0007344300822561692,0
+HierBayes,subfield,117,subfields/2402,Applied Microbiology and Biotechnology,5,0.0007344300822561692,0
+HierBayes,subfield,118,subfields/2736,Pharmacology,5,0.0007344300822561692,0
+HierBayes,subfield,119,subfields/3107,"Atomic and Molecular Physics, and Optics",5,0.0007344300822561692,0
+HierBayes,subfield,120,subfields/3108,Radiation,5,0.0007344300822561692,0
+HierBayes,subfield,121,subfields/3300,General Social Sciences,5,0.0007344300822561692,0
+HierBayes,subfield,122,subfields/1104,Aquatic Science,4,0.0005875440658049354,0
+HierBayes,subfield,123,subfields/1204,Archeology,4,0.0005875440658049354,0
+HierBayes,subfield,124,subfields/2404,Microbiology,4,0.0005875440658049354,0
+HierBayes,subfield,125,subfields/2727,Nephrology,4,0.0005875440658049354,0
+HierBayes,subfield,126,subfields/2808,Neurology,4,0.0005875440658049354,0
+HierBayes,subfield,127,subfields/3202,Applied Psychology,4,0.0005875440658049354,0
+HierBayes,subfield,128,subfields/3611,Pharmacy,4,0.0005875440658049354,0
+HierBayes,subfield,129,subfields/1203,Language and Linguistics,3,0.00044065804935370154,0
+HierBayes,subfield,130,subfields/1207,History and Philosophy of Science,3,0.00044065804935370154,0
+HierBayes,subfield,131,subfields/1209,Museology,3,0.00044065804935370154,0
+HierBayes,subfield,132,subfields/1602,Analytical Chemistry,3,0.00044065804935370154,0
+HierBayes,subfield,133,subfields/1906,Geochemistry and Petrology,3,0.00044065804935370154,0
+HierBayes,subfield,134,subfields/2721,Hepatology,3,0.00044065804935370154,0
+HierBayes,subfield,135,subfields/2731,Ophthalmology,3,0.00044065804935370154,0
+HierBayes,subfield,136,subfields/2734,Pathology and Forensic Medicine,3,0.00044065804935370154,0
+HierBayes,subfield,137,subfields/2747,Transplantation,3,0.00044065804935370154,0
+HierBayes,subfield,138,subfields/2802,Behavioral Neuroscience,3,0.00044065804935370154,0
+HierBayes,subfield,139,subfields/2804,Cellular and Molecular Neuroscience,3,0.00044065804935370154,0
+HierBayes,subfield,140,subfields/3004,Pharmacology,3,0.00044065804935370154,0
+HierBayes,subfield,141,subfields/3404,Small Animals,3,0.00044065804935370154,0
+HierBayes,subfield,142,subfields/3504,Oral Surgery,3,0.00044065804935370154,0
+HierBayes,subfield,143,subfields/3505,Orthodontics,3,0.00044065804935370154,0
+HierBayes,subfield,144,subfields/1103,Animal Science and Zoology,2,0.0002937720329024677,0
+HierBayes,subfield,145,subfields/1210,Music,2,0.0002937720329024677,0
+HierBayes,subfield,146,subfields/1213,Visual Arts and Performing Arts,2,0.0002937720329024677,0
+HierBayes,subfield,147,subfields/1304,Biophysics,2,0.0002937720329024677,0
+HierBayes,subfield,148,subfields/1307,Cell Biology,2,0.0002937720329024677,0
+HierBayes,subfield,149,subfields/1409,"Tourism, Leisure and Hospitality Management",2,0.0002937720329024677,0
+HierBayes,subfield,150,subfields/1606,Physical and Theoretical Chemistry,2,0.0002937720329024677,0
+HierBayes,subfield,151,subfields/2612,Numerical Analysis,2,0.0002937720329024677,0
+HierBayes,subfield,152,subfields/2711,Emergency Medicine,2,0.0002937720329024677,0
+HierBayes,subfield,153,subfields/2716,Genetics,2,0.0002937720329024677,0
+HierBayes,subfield,154,subfields/2717,Geriatrics and Gerontology,2,0.0002937720329024677,0
+HierBayes,subfield,155,subfields/2728,Neurology,2,0.0002937720329024677,0
+HierBayes,subfield,156,subfields/2806,Developmental Neuroscience,2,0.0002937720329024677,0
+HierBayes,subfield,157,subfields/3104,Condensed Matter Physics,2,0.0002937720329024677,0
+HierBayes,subfield,158,subfields/3303,Development,2,0.0002937720329024677,0
+HierBayes,subfield,159,subfields/3309,Library and Information Sciences,2,0.0002937720329024677,0
+HierBayes,subfield,160,subfields/3314,Anthropology,2,0.0002937720329024677,0
+HierBayes,subfield,161,subfields/3322,Urban Studies,2,0.0002937720329024677,0
+HierBayes,subfield,162,subfields/1208,Literature and Literary Theory,1,0.00014688601645123384,0
+HierBayes,subfield,163,subfields/1212,Religious studies,1,0.00014688601645123384,0
+HierBayes,subfield,164,subfields/1309,Developmental Biology,1,0.00014688601645123384,0
+HierBayes,subfield,165,subfields/1310,Endocrinology,1,0.00014688601645123384,0
+HierBayes,subfield,166,subfields/1507,Fluid Flow and Transfer Processes,1,0.00014688601645123384,0
+HierBayes,subfield,167,subfields/1603,Electrochemistry,1,0.00014688601645123384,0
+HierBayes,subfield,168,subfields/1604,Inorganic Chemistry,1,0.00014688601645123384,0
+HierBayes,subfield,169,subfields/1704,Computer Graphics and Computer-Aided Design,1,0.00014688601645123384,0
+HierBayes,subfield,170,subfields/1907,Geology,1,0.00014688601645123384,0
+HierBayes,subfield,171,subfields/2311,Waste Management and Disposal,1,0.00014688601645123384,0
+HierBayes,subfield,172,subfields/2403,Immunology,1,0.00014688601645123384,0
+HierBayes,subfield,173,subfields/2503,Ceramics and Composites,1,0.00014688601645123384,0
+HierBayes,subfield,174,subfields/2504,"Electronic, Optical and Magnetic Materials",1,0.00014688601645123384,0
+HierBayes,subfield,175,subfields/2605,Computational Mathematics,1,0.00014688601645123384,0
+HierBayes,subfield,176,subfields/2608,Geometry and Topology,1,0.00014688601645123384,0
+HierBayes,subfield,177,subfields/2703,Anesthesiology and Pain Medicine,1,0.00014688601645123384,0
+HierBayes,subfield,178,subfields/2707,Complementary and alternative medicine,1,0.00014688601645123384,0
+HierBayes,subfield,179,subfields/2714,Family Practice,1,0.00014688601645123384,0
+HierBayes,subfield,180,subfields/2715,Gastroenterology,1,0.00014688601645123384,0
+HierBayes,subfield,181,subfields/2718,Health Informatics,1,0.00014688601645123384,0
+HierBayes,subfield,182,subfields/2743,Reproductive Medicine,1,0.00014688601645123384,0
+HierBayes,subfield,183,subfields/2803,Biological Psychiatry,1,0.00014688601645123384,0
+HierBayes,subfield,184,subfields/2911,Leadership and Management,1,0.00014688601645123384,0
+HierBayes,subfield,185,subfields/3003,Pharmaceutical Science,1,0.00014688601645123384,0
+HierBayes,subfield,186,subfields/3005,Toxicology,1,0.00014688601645123384,0
+HierBayes,subfield,187,subfields/3105,Instrumentation,1,0.00014688601645123384,0
+HierBayes,subfield,188,subfields/3206,Neuropsychology and Physiological Psychology,1,0.00014688601645123384,0
+HierBayes,subfield,189,subfields/3308,Law,1,0.00014688601645123384,0
+HierBayes,subfield,190,subfields/3310,Linguistics and Language,1,0.00014688601645123384,0
+HierBayes,subfield,191,subfields/3603,Complementary and Manual Therapy,1,0.00014688601645123384,0
+HierBayes,field,1,fields/26,Mathematics,1949,0.2862808460634548,0
+HierBayes,field,2,fields/33,Social Sciences,635,0.09327262044653349,0
+HierBayes,field,3,fields/22,Engineering,566,0.08313748531139835,0
+HierBayes,field,4,fields/17,Computer Science,520,0.07638072855464159,0
+HierBayes,field,5,fields/27,Medicine,514,0.0754994124559342,0
+HierBayes,field,6,fields/23,Environmental Science,404,0.05934195064629847,0
+HierBayes,field,7,fields/32,Psychology,353,0.051850763807285545,0
+HierBayes,field,8,fields/18,Decision Sciences,316,0.046415981198589897,0
+HierBayes,field,9,fields/20,"Economics, Econometrics and Finance",307,0.04509400705052879,0
+HierBayes,field,10,fields/14,"Business, Management and Accounting",264,0.038777908343125736,0
+HierBayes,field,11,fields/13,"Biochemistry, Genetics and Molecular Biology",180,0.026439482961222092,0
+HierBayes,field,12,fields/28,Neuroscience,177,0.02599882491186839,0
+HierBayes,field,13,fields/31,Physics and Astronomy,132,0.019388954171562868,0
+HierBayes,field,14,fields/36,Health Professions,132,0.019388954171562868,0
+HierBayes,field,15,fields/19,Earth and Planetary Sciences,115,0.016891891891891893,0
+HierBayes,field,16,fields/11,Agricultural and Biological Sciences,81,0.01189776733254994,0
+HierBayes,field,17,fields/25,Materials Science,38,0.005581668625146886,0
+HierBayes,field,18,fields/29,Nursing,38,0.005581668625146886,0
+HierBayes,field,19,fields/35,Dentistry,23,0.0033783783783783786,0
+HierBayes,field,20,fields/12,Arts and Humanities,19,0.002790834312573443,0
+HierBayes,field,21,fields/24,Immunology and Microbiology,18,0.0026439482961222094,0
+HierBayes,field,22,fields/16,Chemistry,13,0.00190951821386604,0
+HierBayes,field,23,fields/21,Energy,5,0.0007344300822561692,0
+HierBayes,field,24,fields/30,"Pharmacology, Toxicology and Pharmaceutics",5,0.0007344300822561692,0
+HierBayes,field,25,fields/34,Veterinary,3,0.00044065804935370154,0
+HierBayes,field,26,fields/15,Chemical Engineering,1,0.00014688601645123384,0
+GP,subfield,1,subfields/1702,Artificial Intelligence,5499,0.3696061298561635,0
+GP,subfield,2,subfields/2207,Control and Systems Engineering,945,0.06351660169377604,0
+GP,subfield,3,subfields/2208,Electrical and Electronic Engineering,627,0.042142761123806965,0
+GP,subfield,4,subfields/2613,Statistics and Probability,552,0.03710176098938029,1
+GP,subfield,5,subfields/1803,Management Science and Operations Research,501,0.03367388089797016,0
+GP,subfield,6,subfields/2202,Aerospace Engineering,477,0.03206076085495362,0
+GP,subfield,7,subfields/1707,Computer Vision and Pattern Recognition,406,0.02728861406102971,0
+GP,subfield,8,subfields/3103,Astronomy and Astrophysics,335,0.022516467267105794,0
+GP,subfield,9,subfields/2205,Civil and Structural Engineering,326,0.021911547250974592,0
+GP,subfield,10,subfields/2003,Finance,314,0.021104987229466327,0
+GP,subfield,11,subfields/2203,Automotive Engineering,300,0.020164000537706683,0
+GP,subfield,12,subfields/1804,"Statistics, Probability and Uncertainty",278,0.018685307164941524,0
+GP,subfield,13,subfields/1703,Computational Theory and Mathematics,252,0.01693776045167361,0
+GP,subfield,14,subfields/2213,"Safety, Risk, Reliability and Quality",219,0.014719720392525877,0
+GP,subfield,15,subfields/2505,Materials Chemistry,215,0.014450867052023121,0
+GP,subfield,16,subfields/2210,Mechanical Engineering,211,0.014182013711520365,0
+GP,subfield,17,subfields/2610,Mathematical Physics,193,0.012972173679257964,0
+GP,subfield,18,subfields/2305,Environmental Engineering,184,0.012367253663126763,0
+GP,subfield,19,subfields/2204,Biomedical Engineering,179,0.01203118698749832,0
+GP,subfield,20,subfields/2002,Economics and Econometrics,150,0.010082000268853341,0
+GP,subfield,21,subfields/3109,Statistical and Nonlinear Physics,150,0.010082000268853341,0
+GP,subfield,22,subfields/2604,Applied Mathematics,147,0.009880360263476273,0
+GP,subfield,23,subfields/2212,Ocean Engineering,138,0.009275440247345073,0
+GP,subfield,24,subfields/1711,Signal Processing,134,0.009006586906842317,0
+GP,subfield,25,subfields/2215,Building and Construction,128,0.008603306896088184,0
+GP,subfield,26,subfields/2211,Mechanics of Materials,125,0.008401666890711116,0
+GP,subfield,27,subfields/1705,Computer Networks and Communications,124,0.008334453555585429,0
+GP,subfield,28,subfields/1312,Molecular Biology,106,0.007124613523323027,0
+GP,subfield,29,subfields/3106,Nuclear and High Energy Physics,105,0.007057400188197338,0
+GP,subfield,30,subfields/2206,Computational Mechanics,102,0.006855760182820272,0
+GP,subfield,31,subfields/3107,"Atomic and Molecular Physics, and Optics",94,0.0063180535018147604,0
+GP,subfield,32,subfields/2303,Ecology,75,0.005041000134426671,0
+GP,subfield,33,subfields/2214,Media Technology,73,0.004906573464175292,0
+GP,subfield,34,subfields/2306,Global and Planetary Change,64,0.004301653448044092,0
+GP,subfield,35,subfields/2805,Cognitive Neuroscience,61,0.004100013442667025,0
+GP,subfield,36,subfields/1902,Atmospheric Science,55,0.0036967334319128915,0
+GP,subfield,37,subfields/1910,Oceanography,51,0.003427880091410136,0
+GP,subfield,38,subfields/2611,Modeling and Simulation,50,0.003360666756284447,0
+GP,subfield,39,subfields/2741,"Radiology, Nuclear Medicine and Imaging",46,0.003091813415781691,0
+GP,subfield,40,subfields/1908,Geophysics,45,0.003024600080656002,0
+GP,subfield,41,subfields/2705,Cardiology and Cardiovascular Medicine,44,0.002957386745530313,0
+GP,subfield,42,subfields/1602,Analytical Chemistry,42,0.0028229600752789352,0
+GP,subfield,43,subfields/1710,Information Systems,41,0.0027557467401532463,0
+GP,subfield,44,subfields/2312,Water Science and Technology,34,0.002285253394273424,0
+GP,subfield,45,subfields/2302,Ecological Modeling,24,0.0016131200430165346,0
+GP,subfield,46,subfields/2738,Psychiatry and Mental health,24,0.0016131200430165346,0
+GP,subfield,47,subfields/1110,Plant Science,23,0.0015459067078908454,0
+GP,subfield,48,subfields/1708,Hardware and Architecture,22,0.0014786933727651565,0
+GP,subfield,49,subfields/3205,Experimental and Cognitive Psychology,21,0.0014114800376394676,0
+GP,subfield,50,subfields/1311,Genetics,20,0.0013442667025137787,0
+GP,subfield,51,subfields/1706,Computer Science Applications,19,0.0012770533673880898,0
+GP,subfield,52,subfields/2105,"Renewable Energy, Sustainability and the Environment",19,0.0012770533673880898,0
+GP,subfield,53,subfields/2739,"Public Health, Environmental and Occupational Health",19,0.0012770533673880898,0
+GP,subfield,54,subfields/3108,Radiation,19,0.0012770533673880898,0
+GP,subfield,55,subfields/3317,Demography,18,0.0012098400322624009,0
+GP,subfield,56,subfields/1507,Fluid Flow and Transfer Processes,15,0.0010082000268853341,0
+GP,subfield,57,subfields/2209,Industrial and Manufacturing Engineering,15,0.0010082000268853341,0
+GP,subfield,58,subfields/3207,Social Psychology,15,0.0010082000268853341,0
+GP,subfield,59,subfields/2605,Computational Mathematics,14,0.0009409866917596451,0
+GP,subfield,60,subfields/2740,Pulmonary and Respiratory Medicine,14,0.0009409866917596451,0
+GP,subfield,61,subfields/1904,Earth-Surface Processes,13,0.0008737733566339562,0
+GP,subfield,62,subfields/2612,Numerical Analysis,13,0.0008737733566339562,0
+GP,subfield,63,subfields/2712,"Endocrinology, Diabetes and Metabolism",13,0.0008737733566339562,0
+GP,subfield,64,subfields/3313,Transportation,13,0.0008737733566339562,0
+GP,subfield,65,subfields/3605,Health Information Management,13,0.0008737733566339562,0
+GP,subfield,66,subfields/2728,Neurology,12,0.0008065600215082673,0
+GP,subfield,67,subfields/2746,Surgery,12,0.0008065600215082673,0
+GP,subfield,68,subfields/1304,Biophysics,11,0.0007393466863825783,0
+GP,subfield,69,subfields/1404,Management Information Systems,11,0.0007393466863825783,0
+GP,subfield,70,subfields/1607,Spectroscopy,11,0.0007393466863825783,0
+GP,subfield,71,subfields/1906,Geochemistry and Petrology,11,0.0007393466863825783,0
+GP,subfield,72,subfields/3312,Sociology and Political Science,11,0.0007393466863825783,0
+GP,subfield,73,subfields/1704,Computer Graphics and Computer-Aided Design,10,0.0006721333512568893,0
+GP,subfield,74,subfields/1709,Human-Computer Interaction,10,0.0006721333512568893,0
+GP,subfield,75,subfields/2311,Waste Management and Disposal,10,0.0006721333512568893,0
+GP,subfield,76,subfields/2713,Epidemiology,10,0.0006721333512568893,0
+GP,subfield,77,subfields/1106,Food Science,9,0.0006049200161312004,0
+GP,subfield,78,subfields/2308,"Management, Monitoring, Policy and Law",8,0.0005377066810055115,0
+GP,subfield,79,subfields/2504,"Electronic, Optical and Magnetic Materials",7,0.00047049334587982255,0
+GP,subfield,80,subfields/3104,Condensed Matter Physics,7,0.00047049334587982255,0
+GP,subfield,81,subfields/3105,Instrumentation,7,0.00047049334587982255,0
+GP,subfield,82,subfields/2309,Nature and Landscape Conservation,6,0.00040328001075413364,0
+GP,subfield,83,subfields/2737,Physiology,6,0.00040328001075413364,0
+GP,subfield,84,subfields/2809,Sensory Systems,6,0.00040328001075413364,0
+GP,subfield,85,subfields/1402,Accounting,5,0.0003360666756284447,0
+GP,subfield,86,subfields/1503,Catalysis,5,0.0003360666756284447,0
+GP,subfield,87,subfields/1606,Physical and Theoretical Chemistry,5,0.0003360666756284447,0
+GP,subfield,88,subfields/2310,Pollution,5,0.0003360666756284447,0
+GP,subfield,89,subfields/2730,Oncology,5,0.0003360666756284447,0
+GP,subfield,90,subfields/2735,"Pediatrics, Perinatology and Child Health",5,0.0003360666756284447,0
+GP,subfield,91,subfields/2808,Neurology,5,0.0003360666756284447,0
+GP,subfield,92,subfields/1105,"Ecology, Evolution, Behavior and Systematics",4,0.00026885334050275576,0
+GP,subfield,93,subfields/2804,Cellular and Molecular Neuroscience,4,0.00026885334050275576,0
+GP,subfield,94,subfields/3311,Safety Research,4,0.00026885334050275576,0
+GP,subfield,95,subfields/1111,Soil Science,3,0.00020164000537706682,0
+GP,subfield,96,subfields/1306,Cancer Research,3,0.00020164000537706682,0
+GP,subfield,97,subfields/2304,Environmental Chemistry,3,0.00020164000537706682,0
+GP,subfield,98,subfields/2307,"Health, Toxicology and Mutagenesis",3,0.00020164000537706682,0
+GP,subfield,99,subfields/2704,Biochemistry,3,0.00020164000537706682,0
+GP,subfield,100,subfields/2715,Gastroenterology,3,0.00020164000537706682,0
+GP,subfield,101,subfields/2725,Infectious Diseases,3,0.00020164000537706682,0
+GP,subfield,102,subfields/2734,Pathology and Forensic Medicine,3,0.00020164000537706682,0
+GP,subfield,103,subfields/3003,Pharmaceutical Science,3,0.00020164000537706682,0
+GP,subfield,104,subfields/3306,Health,3,0.00020164000537706682,0
+GP,subfield,105,subfields/3316,Cultural Studies,3,0.00020164000537706682,0
+GP,subfield,106,subfields/3320,Political Science and International Relations,3,0.00020164000537706682,0
+GP,subfield,107,subfields/1103,Animal Science and Zoology,2,0.00013442667025137788,0
+GP,subfield,108,subfields/1204,Archeology,2,0.00013442667025137788,0
+GP,subfield,109,subfields/1405,Management of Technology and Innovation,2,0.00013442667025137788,0
+GP,subfield,110,subfields/1406,Marketing,2,0.00013442667025137788,0
+GP,subfield,111,subfields/1712,Software,2,0.00013442667025137788,0
+GP,subfield,112,subfields/1800,General Decision Sciences,2,0.00013442667025137788,0
+GP,subfield,113,subfields/1802,Information Systems and Management,2,0.00013442667025137788,0
+GP,subfield,114,subfields/1907,Geology,2,0.00013442667025137788,0
+GP,subfield,115,subfields/2102,Energy Engineering and Power Technology,2,0.00013442667025137788,0
+GP,subfield,116,subfields/2607,Discrete Mathematics and Combinatorics,2,0.00013442667025137788,0
+GP,subfield,117,subfields/2608,Geometry and Topology,2,0.00013442667025137788,0
+GP,subfield,118,subfields/2703,Anesthesiology and Pain Medicine,2,0.00013442667025137788,0
+GP,subfield,119,subfields/2711,Emergency Medicine,2,0.00013442667025137788,0
+GP,subfield,120,subfields/2742,Rehabilitation,2,0.00013442667025137788,0
+GP,subfield,121,subfields/2748,Urology,2,0.00013442667025137788,0
+GP,subfield,122,subfields/3612,"Physical Therapy, Sports Therapy and Rehabilitation",2,0.00013442667025137788,0
+GP,subfield,123,subfields/1102,Agronomy and Crop Science,1,6.721333512568894e-05,0
+GP,subfield,124,subfields/1203,Language and Linguistics,1,6.721333512568894e-05,0
+GP,subfield,125,subfields/1207,History and Philosophy of Science,1,6.721333512568894e-05,0
+GP,subfield,126,subfields/1305,Biotechnology,1,6.721333512568894e-05,0
+GP,subfield,127,subfields/1307,Cell Biology,1,6.721333512568894e-05,0
+GP,subfield,128,subfields/1308,Clinical Biochemistry,1,6.721333512568894e-05,0
+GP,subfield,129,subfields/1315,Structural Biology,1,6.721333512568894e-05,0
+GP,subfield,130,subfields/1407,Organizational Behavior and Human Resource Management,1,6.721333512568894e-05,0
+GP,subfield,131,subfields/1603,Electrochemistry,1,6.721333512568894e-05,0
+GP,subfield,132,subfields/1605,Organic Chemistry,1,6.721333512568894e-05,0
+GP,subfield,133,subfields/1911,Paleontology,1,6.721333512568894e-05,0
+GP,subfield,134,subfields/2000,"General Economics, Econometrics and Finance",1,6.721333512568894e-05,0
+GP,subfield,135,subfields/2103,Fuel Technology,1,6.721333512568894e-05,0
+GP,subfield,136,subfields/2502,Biomaterials,1,6.721333512568894e-05,0
+GP,subfield,137,subfields/2503,Ceramics and Composites,1,6.721333512568894e-05,0
+GP,subfield,138,subfields/2507,Polymers and Plastics,1,6.721333512568894e-05,0
+GP,subfield,139,subfields/2508,"Surfaces, Coatings and Films",1,6.721333512568894e-05,0
+GP,subfield,140,subfields/2707,Complementary and alternative medicine,1,6.721333512568894e-05,0
+GP,subfield,141,subfields/2732,Orthopedics and Sports Medicine,1,6.721333512568894e-05,0
+GP,subfield,142,subfields/2736,Pharmacology,1,6.721333512568894e-05,0
+GP,subfield,143,subfields/2807,Endocrine and Autonomic Systems,1,6.721333512568894e-05,0
+GP,subfield,144,subfields/3202,Applied Psychology,1,6.721333512568894e-05,0
+GP,subfield,145,subfields/3609,Occupational Therapy,1,6.721333512568894e-05,0
+GP,subfield,146,subfields/3614,Radiological and Ultrasound Technology,1,6.721333512568894e-05,0
+GP,subfield,147,subfields/3616,Speech and Hearing,1,6.721333512568894e-05,0
+GP,field,1,fields/17,Computer Science,6519,0.4381637316843662,0
+GP,field,2,fields/22,Engineering,3865,0.25977954026078776,0
+GP,field,3,fields/26,Mathematics,973,0.06539857507729534,0
+GP,field,4,fields/18,Decision Sciences,783,0.052628041403414434,0
+GP,field,5,fields/31,Physics and Astronomy,717,0.04819196128511897,0
+GP,field,6,fields/20,"Economics, Econometrics and Finance",465,0.03125420083344536,0
+GP,field,7,fields/23,Environmental Science,416,0.0279607474122866,0
+GP,field,8,fields/27,Medicine,233,0.015660707084285522,0
+GP,field,9,fields/25,Materials Science,226,0.0151902137384057,0
+GP,field,10,fields/19,Earth and Planetary Sciences,178,0.011963973652372631,0
+GP,field,11,fields/13,"Biochemistry, Genetics and Molecular Biology",144,0.009678720258099207,0
+GP,field,12,fields/28,Neuroscience,77,0.0051754268046780485,0
+GP,field,13,fields/16,Chemistry,60,0.0040328001075413365,0
+GP,field,14,fields/33,Social Sciences,55,0.0036967334319128915,0
+GP,field,15,fields/11,Agricultural and Biological Sciences,42,0.0028229600752789352,0
+GP,field,16,fields/32,Psychology,37,0.0024868933996504907,0
+GP,field,17,fields/21,Energy,22,0.0014786933727651565,0
+GP,field,18,fields/14,"Business, Management and Accounting",21,0.0014114800376394676,0
+GP,field,19,fields/15,Chemical Engineering,20,0.0013442667025137787,0
+GP,field,20,fields/36,Health Professions,18,0.0012098400322624009,0
+GP,field,21,fields/12,Arts and Humanities,4,0.00026885334050275576,0
+GP,field,22,fields/30,"Pharmacology, Toxicology and Pharmaceutics",3,0.00020164000537706682,0
+VI,subfield,1,subfields/1702,Artificial Intelligence,872,0.5416149068322982,0
+VI,subfield,2,subfields/2613,Statistics and Probability,245,0.15217391304347827,1
+VI,subfield,3,subfields/1707,Computer Vision and Pattern Recognition,67,0.04161490683229813,0
+VI,subfield,4,subfields/2208,Electrical and Electronic Engineering,36,0.02236024844720497,0
+VI,subfield,5,subfields/3109,Statistical and Nonlinear Physics,35,0.021739130434782608,0
+VI,subfield,6,subfields/1312,Molecular Biology,34,0.02111801242236025,0
+VI,subfield,7,subfields/1908,Geophysics,31,0.019254658385093167,0
+VI,subfield,8,subfields/2207,Control and Systems Engineering,29,0.018012422360248446,0
+VI,subfield,9,subfields/1705,Computer Networks and Communications,18,0.011180124223602485,0
+VI,subfield,10,subfields/2202,Aerospace Engineering,18,0.011180124223602485,0
+VI,subfield,11,subfields/3103,Astronomy and Astrophysics,18,0.011180124223602485,0
+VI,subfield,12,subfields/1803,Management Science and Operations Research,14,0.008695652173913044,0
+VI,subfield,13,subfields/2003,Finance,14,0.008695652173913044,0
+VI,subfield,14,subfields/1710,Information Systems,13,0.008074534161490683,0
+VI,subfield,15,subfields/2205,Civil and Structural Engineering,12,0.007453416149068323,0
+VI,subfield,16,subfields/1311,Genetics,11,0.0068322981366459624,0
+VI,subfield,17,subfields/1711,Signal Processing,11,0.0068322981366459624,0
+VI,subfield,18,subfields/2741,"Radiology, Nuclear Medicine and Imaging",10,0.006211180124223602,0
+VI,subfield,19,subfields/2206,Computational Mechanics,9,0.0055900621118012426,0
+VI,subfield,20,subfields/1804,"Statistics, Probability and Uncertainty",8,0.004968944099378882,0
+VI,subfield,21,subfields/1306,Cancer Research,6,0.0037267080745341614,0
+VI,subfield,22,subfields/2214,Media Technology,6,0.0037267080745341614,0
+VI,subfield,23,subfields/2505,Materials Chemistry,6,0.0037267080745341614,0
+VI,subfield,24,subfields/1902,Atmospheric Science,5,0.003105590062111801,0
+VI,subfield,25,subfields/2305,Environmental Engineering,5,0.003105590062111801,0
+VI,subfield,26,subfields/2604,Applied Mathematics,5,0.003105590062111801,0
+VI,subfield,27,subfields/2805,Cognitive Neuroscience,5,0.003105590062111801,0
+VI,subfield,28,subfields/1703,Computational Theory and Mathematics,4,0.002484472049689441,0
+VI,subfield,29,subfields/2203,Automotive Engineering,4,0.002484472049689441,0
+VI,subfield,30,subfields/2610,Mathematical Physics,4,0.002484472049689441,0
+VI,subfield,31,subfields/2738,Psychiatry and Mental health,4,0.002484472049689441,0
+VI,subfield,32,subfields/2739,"Public Health, Environmental and Occupational Health",4,0.002484472049689441,0
+VI,subfield,33,subfields/3106,Nuclear and High Energy Physics,4,0.002484472049689441,0
+VI,subfield,34,subfields/2002,Economics and Econometrics,3,0.0018633540372670807,0
+VI,subfield,35,subfields/2210,Mechanical Engineering,3,0.0018633540372670807,0
+VI,subfield,36,subfields/2213,"Safety, Risk, Reliability and Quality",3,0.0018633540372670807,0
+VI,subfield,37,subfields/2605,Computational Mathematics,3,0.0018633540372670807,0
+VI,subfield,38,subfields/3311,Safety Research,3,0.0018633540372670807,0
+VI,subfield,39,subfields/1706,Computer Science Applications,2,0.0012422360248447205,0
+VI,subfield,40,subfields/2204,Biomedical Engineering,2,0.0012422360248447205,0
+VI,subfield,41,subfields/2804,Cellular and Molecular Neuroscience,2,0.0012422360248447205,0
+VI,subfield,42,subfields/3313,Transportation,2,0.0012422360248447205,0
+VI,subfield,43,subfields/1204,Archeology,1,0.0006211180124223603,0
+VI,subfield,44,subfields/1304,Biophysics,1,0.0006211180124223603,0
+VI,subfield,45,subfields/1402,Accounting,1,0.0006211180124223603,0
+VI,subfield,46,subfields/1404,Management Information Systems,1,0.0006211180124223603,0
+VI,subfield,47,subfields/1507,Fluid Flow and Transfer Processes,1,0.0006211180124223603,0
+VI,subfield,48,subfields/1602,Analytical Chemistry,1,0.0006211180124223603,0
+VI,subfield,49,subfields/1606,Physical and Theoretical Chemistry,1,0.0006211180124223603,0
+VI,subfield,50,subfields/1708,Hardware and Architecture,1,0.0006211180124223603,0
+VI,subfield,51,subfields/1910,Oceanography,1,0.0006211180124223603,0
+VI,subfield,52,subfields/2211,Mechanics of Materials,1,0.0006211180124223603,0
+VI,subfield,53,subfields/2212,Ocean Engineering,1,0.0006211180124223603,0
+VI,subfield,54,subfields/2303,Ecology,1,0.0006211180124223603,0
+VI,subfield,55,subfields/2306,Global and Planetary Change,1,0.0006211180124223603,0
+VI,subfield,56,subfields/2312,Water Science and Technology,1,0.0006211180124223603,0
+VI,subfield,57,subfields/2612,Numerical Analysis,1,0.0006211180124223603,0
+VI,subfield,58,subfields/2713,Epidemiology,1,0.0006211180124223603,0
+VI,subfield,59,subfields/2808,Neurology,1,0.0006211180124223603,0
+VI,subfield,60,subfields/3108,Radiation,1,0.0006211180124223603,0
+VI,subfield,61,subfields/3205,Experimental and Cognitive Psychology,1,0.0006211180124223603,0
+VI,subfield,62,subfields/3317,Demography,1,0.0006211180124223603,0
+VI,field,1,fields/17,Computer Science,988,0.613664596273292,0
+VI,field,2,fields/26,Mathematics,258,0.16024844720496895,0
+VI,field,3,fields/22,Engineering,124,0.07701863354037267,0
+VI,field,4,fields/31,Physics and Astronomy,58,0.03602484472049689,0
+VI,field,5,fields/13,"Biochemistry, Genetics and Molecular Biology",52,0.03229813664596273,0
+VI,field,6,fields/19,Earth and Planetary Sciences,37,0.02298136645962733,0
+VI,field,7,fields/18,Decision Sciences,22,0.013664596273291925,0
+VI,field,8,fields/27,Medicine,19,0.011801242236024845,0
+VI,field,9,fields/20,"Economics, Econometrics and Finance",17,0.010559006211180125,0
+VI,field,10,fields/23,Environmental Science,8,0.004968944099378882,0
+VI,field,11,fields/28,Neuroscience,8,0.004968944099378882,0
+VI,field,12,fields/25,Materials Science,6,0.0037267080745341614,0
+VI,field,13,fields/33,Social Sciences,6,0.0037267080745341614,0
+VI,field,14,fields/14,"Business, Management and Accounting",2,0.0012422360248447205,0
+VI,field,15,fields/16,Chemistry,2,0.0012422360248447205,0
+VI,field,16,fields/12,Arts and Humanities,1,0.0006211180124223603,0
+VI,field,17,fields/15,Chemical Engineering,1,0.0006211180124223603,0
+VI,field,18,fields/32,Psychology,1,0.0006211180124223603,0
+CausalInference,subfield,1,subfields/2613,Statistics and Probability,3338,0.49269372693726937,1
+CausalInference,subfield,2,subfields/1702,Artificial Intelligence,676,0.09977859778597786,0
+CausalInference,subfield,3,subfields/1311,Genetics,165,0.024354243542435424,0
+CausalInference,subfield,4,subfields/3205,Experimental and Cognitive Psychology,150,0.02214022140221402,0
+CausalInference,subfield,5,subfields/2805,Cognitive Neuroscience,143,0.0211070110701107,0
+CausalInference,subfield,6,subfields/3312,Sociology and Political Science,136,0.02007380073800738,0
+CausalInference,subfield,7,subfields/1312,Molecular Biology,120,0.017712177121771217,0
+CausalInference,subfield,8,subfields/2002,Economics and Econometrics,102,0.015055350553505535,0
+CausalInference,subfield,9,subfields/1710,Information Systems,76,0.011217712177121772,0
+CausalInference,subfield,10,subfields/1803,Management Science and Operations Research,74,0.01092250922509225,0
+CausalInference,subfield,11,subfields/3204,Developmental and Educational Psychology,73,0.010774907749077491,0
+CausalInference,subfield,12,subfields/2307,"Health, Toxicology and Mutagenesis",68,0.01003690036900369,0
+CausalInference,subfield,13,subfields/2306,Global and Planetary Change,61,0.00900369003690037,0
+CausalInference,subfield,14,subfields/1207,History and Philosophy of Science,58,0.008560885608856088,0
+CausalInference,subfield,15,subfields/2207,Control and Systems Engineering,56,0.008265682656826569,0
+CausalInference,subfield,16,subfields/2713,Epidemiology,51,0.007527675276752768,0
+CausalInference,subfield,17,subfields/1707,Computer Vision and Pattern Recognition,46,0.006789667896678966,0
+CausalInference,subfield,18,subfields/1705,Computer Networks and Communications,45,0.006642066420664207,0
+CausalInference,subfield,19,subfields/2739,"Public Health, Environmental and Occupational Health",39,0.005756457564575645,0
+CausalInference,subfield,20,subfields/3304,Education,39,0.005756457564575645,0
+CausalInference,subfield,21,subfields/3320,Political Science and International Relations,37,0.005461254612546125,0
+CausalInference,subfield,22,subfields/2740,Pulmonary and Respiratory Medicine,34,0.005018450184501845,0
+CausalInference,subfield,23,subfields/1804,"Statistics, Probability and Uncertainty",31,0.004575645756457565,0
+CausalInference,subfield,24,subfields/3207,Social Psychology,29,0.004280442804428044,0
+CausalInference,subfield,25,subfields/2730,Oncology,28,0.004132841328413284,0
+CausalInference,subfield,26,subfields/2738,Psychiatry and Mental health,27,0.003985239852398524,0
+CausalInference,subfield,27,subfields/2003,Finance,24,0.0035424354243542436,0
+CausalInference,subfield,28,subfields/2737,Physiology,24,0.0035424354243542436,0
+CausalInference,subfield,29,subfields/1306,Cancer Research,23,0.003394833948339483,0
+CausalInference,subfield,30,subfields/1408,Strategy and Management,23,0.003394833948339483,0
+CausalInference,subfield,31,subfields/2213,"Safety, Risk, Reliability and Quality",23,0.003394833948339483,0
+CausalInference,subfield,32,subfields/3203,Clinical Psychology,23,0.003394833948339483,0
+CausalInference,subfield,33,subfields/3005,Toxicology,22,0.0032472324723247232,0
+CausalInference,subfield,34,subfields/3300,General Social Sciences,22,0.0032472324723247232,0
+CausalInference,subfield,35,subfields/1404,Management Information Systems,21,0.0030996309963099633,0
+CausalInference,subfield,36,subfields/2000,"General Economics, Econometrics and Finance",21,0.0030996309963099633,0
+CausalInference,subfield,37,subfields/2735,"Pediatrics, Perinatology and Child Health",21,0.0030996309963099633,0
+CausalInference,subfield,38,subfields/3306,Health,21,0.0030996309963099633,0
+CausalInference,subfield,39,subfields/3109,Statistical and Nonlinear Physics,20,0.002952029520295203,0
+CausalInference,subfield,40,subfields/2208,Electrical and Electronic Engineering,19,0.002804428044280443,0
+CausalInference,subfield,41,subfields/2727,Nephrology,19,0.002804428044280443,0
+CausalInference,subfield,42,subfields/3311,Safety Research,19,0.002804428044280443,0
+CausalInference,subfield,43,subfields/2712,"Endocrinology, Diabetes and Metabolism",18,0.0026568265682656825,0
+CausalInference,subfield,44,subfields/1406,Marketing,17,0.0025092250922509225,0
+CausalInference,subfield,45,subfields/2725,Infectious Diseases,17,0.0025092250922509225,0
+CausalInference,subfield,46,subfields/2734,Pathology and Forensic Medicine,17,0.0025092250922509225,0
+CausalInference,subfield,47,subfields/3313,Transportation,17,0.0025092250922509225,0
+CausalInference,subfield,48,subfields/3600,General Health Professions,17,0.0025092250922509225,0
+CausalInference,subfield,49,subfields/3605,Health Information Management,17,0.0025092250922509225,0
+CausalInference,subfield,50,subfields/1402,Accounting,16,0.0023616236162361626,0
+CausalInference,subfield,51,subfields/1706,Computer Science Applications,16,0.0023616236162361626,0
+CausalInference,subfield,52,subfields/2305,Environmental Engineering,16,0.0023616236162361626,0
+CausalInference,subfield,53,subfields/2746,Surgery,15,0.002214022140221402,0
+CausalInference,subfield,54,subfields/1703,Computational Theory and Mathematics,14,0.002066420664206642,0
+CausalInference,subfield,55,subfields/1902,Atmospheric Science,14,0.002066420664206642,0
+CausalInference,subfield,56,subfields/2303,Ecology,14,0.002066420664206642,0
+CausalInference,subfield,57,subfields/2204,Biomedical Engineering,13,0.001918819188191882,0
+CausalInference,subfield,58,subfields/2205,Civil and Structural Engineering,13,0.001918819188191882,0
+CausalInference,subfield,59,subfields/2210,Mechanical Engineering,13,0.001918819188191882,0
+CausalInference,subfield,60,subfields/2312,Water Science and Technology,13,0.001918819188191882,0
+CausalInference,subfield,61,subfields/2728,Neurology,13,0.001918819188191882,0
+CausalInference,subfield,62,subfields/2215,Building and Construction,12,0.0017712177121771218,0
+CausalInference,subfield,63,subfields/1405,Management of Technology and Innovation,11,0.0016236162361623616,0
+CausalInference,subfield,64,subfields/1407,Organizational Behavior and Human Resource Management,11,0.0016236162361623616,0
+CausalInference,subfield,65,subfields/1711,Signal Processing,11,0.0016236162361623616,0
+CausalInference,subfield,66,subfields/1712,Software,10,0.0014760147601476014,0
+CausalInference,subfield,67,subfields/2309,Nature and Landscape Conservation,10,0.0014760147601476014,0
+CausalInference,subfield,68,subfields/2705,Cardiology and Cardiovascular Medicine,10,0.0014760147601476014,0
+CausalInference,subfield,69,subfields/2202,Aerospace Engineering,9,0.0013284132841328412,0
+CausalInference,subfield,70,subfields/2214,Media Technology,9,0.0013284132841328412,0
+CausalInference,subfield,71,subfields/2611,Modeling and Simulation,9,0.0013284132841328412,0
+CausalInference,subfield,72,subfields/3107,"Atomic and Molecular Physics, and Optics",9,0.0013284132841328412,0
+CausalInference,subfield,73,subfields/3308,Law,9,0.0013284132841328412,0
+CausalInference,subfield,74,subfields/1110,Plant Science,8,0.0011808118081180813,0
+CausalInference,subfield,75,subfields/1800,General Decision Sciences,8,0.0011808118081180813,0
+CausalInference,subfield,76,subfields/2203,Automotive Engineering,8,0.0011808118081180813,0
+CausalInference,subfield,77,subfields/2209,Industrial and Manufacturing Engineering,8,0.0011808118081180813,0
+CausalInference,subfield,78,subfields/2310,Pollution,8,0.0011808118081180813,0
+CausalInference,subfield,79,subfields/1802,Information Systems and Management,7,0.001033210332103321,0
+CausalInference,subfield,80,subfields/1911,Paleontology,7,0.001033210332103321,0
+CausalInference,subfield,81,subfields/2206,Computational Mechanics,7,0.001033210332103321,0
+CausalInference,subfield,82,subfields/2212,Ocean Engineering,7,0.001033210332103321,0
+CausalInference,subfield,83,subfields/2308,"Management, Monitoring, Policy and Law",7,0.001033210332103321,0
+CausalInference,subfield,84,subfields/2505,Materials Chemistry,7,0.001033210332103321,0
+CausalInference,subfield,85,subfields/2732,Orthopedics and Sports Medicine,7,0.001033210332103321,0
+CausalInference,subfield,86,subfields/2741,"Radiology, Nuclear Medicine and Imaging",7,0.001033210332103321,0
+CausalInference,subfield,87,subfields/2916,Nutrition and Dietetics,7,0.001033210332103321,0
+CausalInference,subfield,88,subfields/3317,Demography,7,0.001033210332103321,0
+CausalInference,subfield,89,subfields/1203,Language and Linguistics,6,0.0008856088560885609,0
+CausalInference,subfield,90,subfields/1208,Literature and Literary Theory,6,0.0008856088560885609,0
+CausalInference,subfield,91,subfields/1211,Philosophy,6,0.0008856088560885609,0
+CausalInference,subfield,92,subfields/2743,Reproductive Medicine,6,0.0008856088560885609,0
+CausalInference,subfield,93,subfields/3314,Anthropology,6,0.0008856088560885609,0
+CausalInference,subfield,94,subfields/2304,Environmental Chemistry,5,0.0007380073800738007,0
+CausalInference,subfield,95,subfields/2402,Applied Microbiology and Biotechnology,5,0.0007380073800738007,0
+CausalInference,subfield,96,subfields/2720,Hematology,5,0.0007380073800738007,0
+CausalInference,subfield,97,subfields/2736,Pharmacology,5,0.0007380073800738007,0
+CausalInference,subfield,98,subfields/2745,Rheumatology,5,0.0007380073800738007,0
+CausalInference,subfield,99,subfields/3315,Communication,5,0.0007380073800738007,0
+CausalInference,subfield,100,subfields/3506,Periodontics,5,0.0007380073800738007,0
+CausalInference,subfield,101,subfields/1100,General Agricultural and Biological Sciences,4,0.0005904059040590406,0
+CausalInference,subfield,102,subfields/1106,Food Science,4,0.0005904059040590406,0
+CausalInference,subfield,103,subfields/1111,Soil Science,4,0.0005904059040590406,0
+CausalInference,subfield,104,subfields/1904,Earth-Surface Processes,4,0.0005904059040590406,0
+CausalInference,subfield,105,subfields/2604,Applied Mathematics,4,0.0005904059040590406,0
+CausalInference,subfield,106,subfields/2717,Geriatrics and Gerontology,4,0.0005904059040590406,0
+CausalInference,subfield,107,subfields/2808,Neurology,4,0.0005904059040590406,0
+CausalInference,subfield,108,subfields/3616,Speech and Hearing,4,0.0005904059040590406,0
+CausalInference,subfield,109,subfields/1102,Agronomy and Crop Science,3,0.00044280442804428045,0
+CausalInference,subfield,110,subfields/1307,Cell Biology,3,0.00044280442804428045,0
+CausalInference,subfield,111,subfields/2211,Mechanics of Materials,3,0.00044280442804428045,0
+CausalInference,subfield,112,subfields/2302,Ecological Modeling,3,0.00044280442804428045,0
+CausalInference,subfield,113,subfields/2608,Geometry and Topology,3,0.00044280442804428045,0
+CausalInference,subfield,114,subfields/2706,Critical Care and Intensive Care Medicine,3,0.00044280442804428045,0
+CausalInference,subfield,115,subfields/2711,Emergency Medicine,3,0.00044280442804428045,0
+CausalInference,subfield,116,subfields/2718,Health Informatics,3,0.00044280442804428045,0
+CausalInference,subfield,117,subfields/2721,Hepatology,3,0.00044280442804428045,0
+CausalInference,subfield,118,subfields/2724,Internal Medicine,3,0.00044280442804428045,0
+CausalInference,subfield,119,subfields/2729,Obstetrics and Gynecology,3,0.00044280442804428045,0
+CausalInference,subfield,120,subfields/2731,Ophthalmology,3,0.00044280442804428045,0
+CausalInference,subfield,121,subfields/3303,Development,3,0.00044280442804428045,0
+CausalInference,subfield,122,subfields/3316,Cultural Studies,3,0.00044280442804428045,0
+CausalInference,subfield,123,subfields/3318,Gender Studies,3,0.00044280442804428045,0
+CausalInference,subfield,124,subfields/3321,Public Administration,3,0.00044280442804428045,0
+CausalInference,subfield,125,subfields/3614,Radiological and Ultrasound Technology,3,0.00044280442804428045,0
+CausalInference,subfield,126,subfields/1103,Animal Science and Zoology,2,0.0002952029520295203,0
+CausalInference,subfield,127,subfields/1304,Biophysics,2,0.0002952029520295203,0
+CausalInference,subfield,128,subfields/1708,Hardware and Architecture,2,0.0002952029520295203,0
+CausalInference,subfield,129,subfields/1709,Human-Computer Interaction,2,0.0002952029520295203,0
+CausalInference,subfield,130,subfields/2105,"Renewable Energy, Sustainability and the Environment",2,0.0002952029520295203,0
+CausalInference,subfield,131,subfields/2403,Immunology,2,0.0002952029520295203,0
+CausalInference,subfield,132,subfields/2610,Mathematical Physics,2,0.0002952029520295203,0
+CausalInference,subfield,133,subfields/2708,Dermatology,2,0.0002952029520295203,0
+CausalInference,subfield,134,subfields/2714,Family Practice,2,0.0002952029520295203,0
+CausalInference,subfield,135,subfields/2716,Genetics,2,0.0002952029520295203,0
+CausalInference,subfield,136,subfields/2723,Immunology and Allergy,2,0.0002952029520295203,0
+CausalInference,subfield,137,subfields/2809,Sensory Systems,2,0.0002952029520295203,0
+CausalInference,subfield,138,subfields/3004,Pharmacology,2,0.0002952029520295203,0
+CausalInference,subfield,139,subfields/3103,Astronomy and Astrophysics,2,0.0002952029520295203,0
+CausalInference,subfield,140,subfields/3322,Urban Studies,2,0.0002952029520295203,0
+CausalInference,subfield,141,subfields/3505,Orthodontics,2,0.0002952029520295203,0
+CausalInference,subfield,142,subfields/3604,Emergency Medical Services,2,0.0002952029520295203,0
+CausalInference,subfield,143,subfields/3612,"Physical Therapy, Sports Therapy and Rehabilitation",2,0.0002952029520295203,0
+CausalInference,subfield,144,subfields/1105,"Ecology, Evolution, Behavior and Systematics",1,0.00014760147601476016,0
+CausalInference,subfield,145,subfields/1109,Insect Science,1,0.00014760147601476016,0
+CausalInference,subfield,146,subfields/1202,History,1,0.00014760147601476016,0
+CausalInference,subfield,147,subfields/1204,Archeology,1,0.00014760147601476016,0
+CausalInference,subfield,148,subfields/1206,Conservation,1,0.00014760147601476016,0
+CausalInference,subfield,149,subfields/1210,Music,1,0.00014760147601476016,0
+CausalInference,subfield,150,subfields/1302,Aging,1,0.00014760147601476016,0
+CausalInference,subfield,151,subfields/1605,Organic Chemistry,1,0.00014760147601476016,0
+CausalInference,subfield,152,subfields/1908,Geophysics,1,0.00014760147601476016,0
+CausalInference,subfield,153,subfields/1910,Oceanography,1,0.00014760147601476016,0
+CausalInference,subfield,154,subfields/2100,General Energy,1,0.00014760147601476016,0
+CausalInference,subfield,155,subfields/2311,Waste Management and Disposal,1,0.00014760147601476016,0
+CausalInference,subfield,156,subfields/2404,Microbiology,1,0.00014760147601476016,0
+CausalInference,subfield,157,subfields/2405,Parasitology,1,0.00014760147601476016,0
+CausalInference,subfield,158,subfields/2715,Gastroenterology,1,0.00014760147601476016,0
+CausalInference,subfield,159,subfields/2733,Otorhinolaryngology,1,0.00014760147601476016,0
+CausalInference,subfield,160,subfields/2803,Biological Psychiatry,1,0.00014760147601476016,0
+CausalInference,subfield,161,subfields/2806,Developmental Neuroscience,1,0.00014760147601476016,0
+CausalInference,subfield,162,subfields/2922,Research and Theory,1,0.00014760147601476016,0
+CausalInference,subfield,163,subfields/3108,Radiation,1,0.00014760147601476016,0
+CausalInference,subfield,164,subfields/3202,Applied Psychology,1,0.00014760147601476016,0
+CausalInference,subfield,165,subfields/3310,Linguistics and Language,1,0.00014760147601476016,0
+CausalInference,subfield,166,subfields/3404,Small Animals,1,0.00014760147601476016,0
+CausalInference,subfield,167,subfields/3609,Occupational Therapy,1,0.00014760147601476016,0
+CausalInference,field,1,fields/26,Mathematics,3356,0.49535055350553503,0
+CausalInference,field,2,fields/17,Computer Science,898,0.1325461254612546,0
+CausalInference,field,3,fields/27,Medicine,403,0.05948339483394834,0
+CausalInference,field,4,fields/33,Social Sciences,333,0.04915129151291513,0
+CausalInference,field,5,fields/13,"Biochemistry, Genetics and Molecular Biology",314,0.04634686346863469,0
+CausalInference,field,6,fields/32,Psychology,276,0.0407380073800738,0
+CausalInference,field,7,fields/23,Environmental Science,206,0.03040590405904059,0
+CausalInference,field,8,fields/22,Engineering,200,0.02952029520295203,0
+CausalInference,field,9,fields/28,Neuroscience,151,0.022287822878228784,0
+CausalInference,field,10,fields/20,"Economics, Econometrics and Finance",147,0.021697416974169742,0
+CausalInference,field,11,fields/18,Decision Sciences,120,0.017712177121771217,0
+CausalInference,field,12,fields/14,"Business, Management and Accounting",99,0.014612546125461255,0
+CausalInference,field,13,fields/12,Arts and Humanities,80,0.011808118081180811,0
+CausalInference,field,14,fields/36,Health Professions,46,0.006789667896678966,0
+CausalInference,field,15,fields/31,Physics and Astronomy,32,0.004723247232472325,0
+CausalInference,field,16,fields/11,Agricultural and Biological Sciences,27,0.003985239852398524,0
+CausalInference,field,17,fields/19,Earth and Planetary Sciences,27,0.003985239852398524,0
+CausalInference,field,18,fields/30,"Pharmacology, Toxicology and Pharmaceutics",24,0.0035424354243542436,0
+CausalInference,field,19,fields/24,Immunology and Microbiology,9,0.0013284132841328412,0
+CausalInference,field,20,fields/29,Nursing,8,0.0011808118081180813,0
+CausalInference,field,21,fields/25,Materials Science,7,0.001033210332103321,0
+CausalInference,field,22,fields/35,Dentistry,7,0.001033210332103321,0
+CausalInference,field,23,fields/21,Energy,3,0.00044280442804428045,0
+CausalInference,field,24,fields/16,Chemistry,1,0.00014760147601476016,0
+CausalInference,field,25,fields/34,Veterinary,1,0.00014760147601476016,0
