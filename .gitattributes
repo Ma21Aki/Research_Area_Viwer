@@ -1,0 +1,2 @@
+# Windows の起動ファイルは CRLF のまま保つ(LF だと cmd.exe が誤動作することがある)
+*.bat text eol=crlf

@@ -26,6 +26,17 @@ body { margin: 0; background: var(--page); color: var(--ink);
   font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
   padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom); }
 main { max-width: 960px; margin: 0 auto; padding: 16px 0 32px; }
+/* スマホ: 指標 → グラフ → 表 → トピック の順に縦に並べる */
+.layout { display: flex; flex-direction: column; }
+.layout > aside, .layout > section { display: contents; }
+#controls { order: 1; } #status { order: 2; } #chartCard { order: 3; } #tableCard { order: 4; } #topicCard { order: 5; }
+/* PC: 左に操作欄(指標・トピック)、右にグラフと表 */
+@media (min-width: 1000px) {
+  main { max-width: 1320px; }
+  .layout { display: grid; grid-template-columns: 400px minmax(0, 1fr); gap: 0 16px; align-items: start; }
+  .layout > aside, .layout > section { display: block; }
+  .layout > aside { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto; }
+}
 h1 { font-size: 18px; margin: 0 0 4px; }
 h2 { font-size: 13px; color: var(--ink2); font-weight: 600; margin: 0 0 6px; }
 .meta, .note { color: var(--ink2); font-size: 12px; margin: 0 0 12px; }
@@ -50,12 +61,25 @@ table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th, td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
 th:first-child, td:first-child { text-align: left; white-space: normal; }
 th { color: var(--ink2); font-weight: 500; }
-details { border-top: 1px solid var(--grid); padding: 8px 0; font-size: 13px; }
-details:first-of-type { border-top: 0; }
-summary { cursor: pointer; min-height: 32px; display: flex; align-items: center; gap: 8px; }
-.phr { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 0 0 20px; color: var(--ink2); }
-.phr span { border: 1px solid var(--grid); border-radius: 8px; padding: 2px 8px; }
-#error { color: var(--ink); }
+#error, #status { color: var(--ink); }
+#status { border-left: 4px solid var(--accent); }
+#status.err { border-left-color: var(--s8); }
+progress { width: 100%; height: 8px; accent-color: var(--accent); }
+.topic { border-top: 1px solid var(--grid); padding: 8px 0; }
+.topic:first-child { border-top: 0; padding-top: 0; }
+.topic-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.topic-row .chip { flex: 1; justify-content: flex-start; text-align: left; border: 0; padding-left: 4px; }
+button.small { min-height: 36px; font-size: 13px; padding: 0 10px; }
+.detail { padding: 6px 0 4px 24px; font-size: 13px; }
+.detail h3 { font-size: 12px; color: var(--ink2); font-weight: 600; margin: 8px 0 4px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--grid); border-radius: 8px; padding: 2px 4px 2px 8px; min-height: 32px; }
+.tag .n { color: var(--ink2); font-size: 12px; }
+.tag button { border: 0; background: none; color: var(--ink2); font-size: 16px; min-width: 28px; min-height: 28px; cursor: pointer; }
+.add { display: flex; gap: 6px; margin-top: 6px; }
+.add input { flex: 1; min-width: 0; min-height: 40px; border: 1px solid var(--grid); border-radius: 8px; padding: 0 10px; font: inherit; font-size: 14px; background: var(--page); color: var(--ink); }
+.danger { color: var(--s8); }
+.muted { color: var(--ink2); font-size: 12px; }
 </style>
 </head>
 <body>
@@ -64,19 +88,35 @@ summary { cursor: pointer; min-height: 32px; display: flex; align-items: center;
   <p class="meta" id="meta">読み込み中…</p>
   <p id="error" class="card" hidden></p>
 
+  <div class="layout">
+  <aside>
   <div class="card" id="controls" hidden>
     <div class="group"><h2>指標</h2><div class="row" id="metrics"></div></div>
     <div class="group" id="scopeBox"><h2>集計範囲(分母)</h2><div class="row" id="scopes"></div></div>
     <div class="group"><h2>表示</h2><div class="row" id="smooth"></div></div>
-    <div class="group"><h2>トピック(タップで表示/非表示)</h2><div class="row" id="topics"></div></div>
   </div>
 
-  <div class="card wrap"><svg id="chart" role="img" aria-label="トピック別の推移"></svg><div id="tip"></div>
+  <p id="status" class="card" hidden></p>
+  <div class="card" id="topicCard" hidden>
+    <h2>トピック(名前のタップで表示/非表示、詳細設定で言い換え・除外語句)</h2>
+    <div id="topics"></div>
+    <form class="add" id="newTopic" hidden><input name="w" placeholder="新しいトピックの見出し語句(例: particle filter)" maxlength="120" aria-label="新しいトピックの見出し語句"><button class="opt small">追加</button></form>
+    <p class="note" id="topicNote"></p>
+  </div>
+  </aside>
+  <section>
+
+  <div class="card wrap" id="chartCard"><svg id="chart" role="img" aria-label="トピック別の推移"></svg><div id="tip"></div>
     <p class="note" id="chartNote"></p></div>
-  <div class="card"><table id="table"></table><p class="note" id="tableNote"></p></div>
-  <div class="card"><h2>検出語句(各トピックは語句の OR。件数は取得できた論文数)</h2><div id="phrases"></div></div>
+  <div class="card" id="tableCard"><table id="table"></table><p class="note" id="tableNote"></p></div>
+  </section>
+  </div>
 </main>
 <script src="app.js"></script>
-<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});</script>
+<script>
+// PC版(ローカルサーバー)では画面の更新をすぐ反映させたいので、オフライン用キャッシュは公開サイトだけで使う
+if ("serviceWorker" in navigator && !["localhost", "127.0.0.1"].includes(location.hostname))
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
 </body>
 </html>

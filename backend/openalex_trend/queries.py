@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-import re
-
 from .config import Config
+from .text import normalize_phrase
 
 PAGE_SIZE = 200  # OpenAlex の per_page 上限
 LEVELS = ("all", "field", "subfield")  # 出現率の分母の切替(広い順)
@@ -24,11 +23,6 @@ def quote(phrase: str) -> str:
 def or_query(phrases) -> str:
     """同義語・表記揺れを OR 条件でまとめた検索式。"""
     return " OR ".join(quote(p) for p in phrases)
-
-
-def normalize_phrase(phrase: str) -> str:
-    """ハイフン・大小・空白の違いを畳む(OpenAlex 側でも同一視されるため重複取得を避ける)。"""
-    return re.sub(r"\s+", " ", phrase.lower().replace("-", " ")).strip()
 
 
 def unique_phrases(phrases) -> list[str]:
@@ -84,10 +78,13 @@ def count_params(cfg: Config, query: str) -> dict:
 
 
 def works_params(cfg: Config, phrase: str) -> dict:
-    """1語句に一致する論文を cursor ページングで全件取るための初回パラメータ。"""
+    """1語句に一致する論文を cursor ページングで全件取るための初回パラメータ。
+
+    語句は正規化して送る(大小・ハイフンの違いで同じ検索を二重に打たず、キャッシュを共有する)。
+    """
     return {
         "filter": year_filter(cfg),
-        cfg.search_param: quote(phrase),
+        cfg.search_param: quote(normalize_phrase(phrase)),
         "per_page": PAGE_SIZE,
         "select": WORK_SELECT,
         "cursor": "*",

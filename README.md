@@ -14,6 +14,22 @@ data/cache/  APIレスポンスのキャッシュ(git管理外)
 バックエンドとフロントエンドは `outputs/`(`dashboard.json`・CSV・PNG)のファイルだけでつながる。
 フロントはバックエンドのコードに依存しないため、将来 PC 版を作る場合も同じ出力を読めばよい。
 
+## PC版ダッシュボード(Windows)
+
+トピックの追加・削除、言い換え・除外語句の編集を画面で行える版。自分の PC の中だけで動き、編集はすぐ反映される(除外語句の変更や取得済みの語句は通信なし。新しい語句は取得に数秒〜数十秒)。
+
+1. Python 3.11 以上を https://www.python.org/downloads/ から入れる(インストール時に「Add python.exe to PATH」にチェック)。
+2. このリポジトリを PC に置く(GitHub の「Code → Download ZIP」を展開するか、GitHub Desktop でクローン)。
+3. `start_dashboard.bat` をダブルクリックする。初回だけ Python 環境を作り(数分)、OpenAlex の API キーを聞かれるので入力する(Windows のユーザー環境変数 `OPENALEX_API_KEY` に保存され、次回からは聞かれない)。
+4. ブラウザで `http://127.0.0.1:8765/` が開く。止めるときは黒い画面を閉じる。
+
+画面の使い方:
+- トピックは見出し語句だけを表示する。名前をタップすると折れ線の表示/非表示、「詳細設定」で言い換え(OR で並列検索する語句)と除外語句(タイトルに含む論文を除く)を展開して編集できる
+- 一番下の入力欄から新しいトピックを追加できる(8個まで)
+- 編集は、取得と集計がすべて成功したときだけ `topics.json` に保存する(失敗したら元のまま)
+
+公開サイト(iPhone で見る方)に反映するには、編集後の `topics.json` を GitHub に上げてから Actions の `run` を実行する(GitHub Desktop ならコミットして Push、ZIP の場合は GitHub の画面で「Add file → Upload files」)。
+
 ## 使い方(iPhone だけで完結させる場合)
 
 1. GitHub のリポジトリ設定 → Secrets and variables → Actions で `OPENALEX_API_KEY` を登録する(キーは https://openalex.org/settings/api で無料取得)。
@@ -39,7 +55,8 @@ python -m openalex_trend validate --dry-run   # 推定リクエスト数だけ�
 python -m openalex_trend validate             # OR条件・フレーズ指定の検証 -> outputs/validation.json
 python -m openalex_trend run                  # 集計 -> outputs/dashboard.json, title_trend.csv, topic_metrics.csv, title_trend_ratio.png
 python -m openalex_trend diagnose             # 一致論文の subfield 分布 -> outputs/subfield_distribution.csv
-python -m openalex_trend sample               # 精度検証用サンプル -> outputs/samples/precision_samples.csv
+python -m openalex_trend sample               # 精度検証用サンプル
+python -m openalex_trend serve --open         # PC版ダッシュボード(Windows 以外でも動く) -> outputs/samples/precision_samples.csv
 python -m pytest -q                           # テスト(APIはモック)
 ```
 
@@ -60,14 +77,15 @@ cd frontend && python -m http.server 8000     # http://localhost:8000
 - **指標:** 出現率 / 論文数 / 被引用数(その年に受けた) / 被引用÷論文(出版年別の累計) / FWCI / 上位10%率。FWCI と上位10%率は、OpenAlex の応答に値がなければ選べなくなる
 - **集計範囲(分母):** 全論文 / Mathematics(field) / Statistics and Probability(subfield)。出現率と論文数に効く
 - **表示:** 年次 / 3年平均、トピックの表示・非表示、タップで年ごとの値を表示
-- **検出語句:** トピックごとの語句(OR)と、語句別の件数
+- **トピック:** 見出し語句だけを表示し、「詳細設定」で言い換え・除外語句と語句別の件数を展開する(公開サイトでは閲覧のみ、編集は PC版)
 
 出現率・移動平均は画面側で計算する。バックエンドは、論文単位の取得結果から全指標を手元で集計して `dashboard.json` に出す。
 
 ## トピックの追加とキャッシュ
 
-`backend/config.yaml` の `fields` に項目を足して `run` を実行するだけでよい。語句ごとの取得結果(各ページ)を `data/cache/` に残しており、既存トピックは再検索せず、新しい語句の分だけ取得する(既存トピックに語句を足したときも同様)。分母(3水準)は各1リクエストで、これもキャッシュされる。Actions では `actions/cache` で実行間にキャッシュを引き継ぐ。
-語句の表記だけが違うもの(ハイフン・大小・空白)は同一視して1回だけ取得する。
+トピックはリポジトリ直下の `topics.json` で管理する(PC版の画面から編集するか、直接書き換える)。形式は `{"id", "headword"(見出し語句), "synonyms"(言い換え), "excludes"(除外語句), "color"}` の配列。検索は「見出し語句 OR 言い換え」で、除外語句をタイトルに含む論文は集計から外す(単語単位で照合し、複数形 s/es も一致)。
+トピックを足して集計し直しても、語句ごとの取得結果(各ページ)を `data/cache/` に残しており、既存トピックは再検索せず、新しい語句の分だけ取得する(既存トピックに語句を足したときも同様)。分母(3水準)は各1リクエストで、これもキャッシュされる。Actions では `actions/cache` で実行間にキャッシュを引き継ぐ。
+語句の表記だけが違うもの(ハイフン・大小・空白)は同一視して1回だけ取得する。除外語句は取得済みのタイトルを手元で絞り込むだけなので、通信しない。
 
 ## 出力
 
@@ -95,6 +113,7 @@ cd frontend && python -m http.server 8000     # http://localhost:8000
 - **`group_by=publication_year` で集計する。** `group_by` は1リクエストにつき1つまで。
 - **語句ごとに取得して work ID で和集合を取る。** OR 条件の動作は検証済みだが、語句ごとのキャッシュ(トピックや語句の追加で再検索しない)と、被引用の指標を論文単位で集計するために、語句ごとに cursor ページングで取得して和集合を取る。
 - **キャッシュ・リトライ・レート制御。** 応答は `data/cache/` に JSON で保存し、再実行で同じクエリを打たない。429/5xx は指数バックオフ(1, 2, 4…秒。`Retry-After` があれば尊重)。リクエスト間隔は毎秒30以内。リクエスト数が1日の予算(既定 $1 = 10,000 リクエスト)を超えそうなら通信前に中止する。
+- **PC版はローカルサーバー。** 公開サイトは静的なページなので、画面から検索させるには API キーを持つサーバーが要る。キーを隠したまま即時に反映するため、自分の PC(127.0.0.1)だけで待ち受けるサーバーにした。他サイトからの書き込みは Host / Origin の確認で拒否する。
 - **キーを残さない。** キーは環境変数からのみ読み、キャッシュ・例外メッセージ・出力に含めない(テストで確認済み)。
 
 ## 既知の限界

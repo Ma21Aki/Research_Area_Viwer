@@ -7,6 +7,7 @@
     python -m openalex_trend run        # 集計 + CSV/JSON/PNG 出力
     python -m openalex_trend diagnose   # 一致論文の subfield 分布(分母の妥当性の診断)
     python -m openalex_trend sample     # 精度検証用サンプル
+    python -m openalex_trend serve --open  # PC版ダッシュボード(トピックを画面で編集)
 """
 
 from __future__ import annotations
@@ -18,11 +19,10 @@ from . import diagnose, validation
 from .analysis import default_trend_table
 from .client import API_KEY_ENV, BudgetExceeded, OpenAlexClient, OpenAlexError
 from .config import DEFAULT_CONFIG, Config, load_config
-from .counts import fetch_denominators
-from .dataset import add_ratios, build_metrics
+from .pipeline import build
 from .report import plot_ratio, write_csv, write_dashboard_json, write_metrics_csv
 from .sampler import sample_all, write_samples
-from .works import fetch_topic_works, plan_requests
+from .works import plan_requests
 
 
 def _announce(client: OpenAlexClient, reqs: list[dict], extra: int = 0) -> None:
@@ -43,17 +43,13 @@ def cmd_run(client: OpenAlexClient, cfg: Config, args) -> None:
     _announce(client, reqs, extra)
     if args.dry_run:
         return
-    denominators = fetch_denominators(client, cfg)
-    topic_works, phrase_counts = {}, {}
-    for f in cfg.fields:  # 取得済みの語句はキャッシュから読むので、新しい語句の分だけ通信する
-        topic_works[f.label], phrase_counts[f.label] = fetch_topic_works(client, cfg, f)
-    metrics = add_ratios(cfg, build_metrics(cfg, topic_works), denominators)
+    r = build(client, cfg)
     out = cfg.output_dir
-    trend = default_trend_table(cfg, metrics, denominators)
+    trend = default_trend_table(cfg, r.metrics, r.denominators)
     for p in (
         write_csv(trend, out),
-        write_metrics_csv(metrics, out),
-        write_dashboard_json(cfg, metrics, denominators, phrase_counts, out),
+        write_metrics_csv(r.metrics, out),
+        write_dashboard_json(r.doc, out),
         plot_ratio(cfg, trend, out),
     ):
         print("出力:", p)
@@ -86,7 +82,13 @@ def cmd_sample(client: OpenAlexClient, cfg: Config, args) -> None:
     print("出力:", write_samples(rows, cfg.output_dir / "samples"), f"({len(rows)}件)")
 
 
-COMMANDS = {"plan": cmd_plan, "run": cmd_run, "validate": cmd_validate, "sample": cmd_sample, "diagnose": cmd_diagnose}
+def cmd_serve(client: OpenAlexClient, cfg: Config, args) -> None:
+    from .server import serve  # 画面用サーバー(PC版)
+
+    serve(cfg, client, host=args.host, port=args.port, open_browser=args.open)
+
+
+COMMANDS = {"plan": cmd_plan, "run": cmd_run, "validate": cmd_validate, "sample": cmd_sample, "diagnose": cmd_diagnose, "serve": cmd_serve}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -94,6 +96,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("command", choices=COMMANDS)
     ap.add_argument("--config", default=str(DEFAULT_CONFIG))
     ap.add_argument("--dry-run", action="store_true", help="推定のみ表示して通信しない")
+    ap.add_argument("--host", default="127.0.0.1", help="serve: 待ち受けるアドレス(既定は自分のPCのみ)")
+    ap.add_argument("--port", type=int, default=8765, help="serve: ポート番号")
+    ap.add_argument("--open", action="store_true", help="serve: 起動後にブラウザを開く")
     args = ap.parse_args(argv)
     cfg = load_config(args.config)
     client = OpenAlexClient(cfg)

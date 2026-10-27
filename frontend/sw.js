@@ -1,5 +1,5 @@
 // アプリ本体はキャッシュ優先、分析結果(data/)はネットワーク優先で常に最新を見せる
-const SHELL = "shell-v2";
+const SHELL = "shell-v3";
 const FILES = ["./", "index.html", "app.js", "manifest.webmanifest", "icons/icon-192.png"];
 
 self.addEventListener("install", (e) => {

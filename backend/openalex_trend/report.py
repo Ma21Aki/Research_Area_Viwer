@@ -49,52 +49,58 @@ def write_metrics_csv(metrics: pd.DataFrame, out_dir: Path) -> Path:
     return path
 
 
-def write_dashboard_json(
+def dashboard_doc(
     cfg: Config,
     metrics: pd.DataFrame,
     denominators: dict[str, pd.Series],
-    phrase_counts: dict[str, dict[str, int]],
-    out_dir: Path,
-) -> Path:
-    """フロントエンド用 JSON。出現率・移動平均は画面側で計算するので、素の件数と指標だけを渡す。"""
+    fetched: dict,
+) -> dict:
+    """フロントエンド用のデータ。出現率・移動平均は画面側で計算するので、素の件数と指標だけを渡す。
+
+    fetched はトピックID -> works.TopicFetch(語句・除外語句ごとの件数を画面に出す)。
+    """
     years = list(cfg.years)
     generated = datetime.now(timezone.utc)
     names = {"all": "全論文", "field": cfg.oa_field_name, "subfield": cfg.subfield_name}
     topics = []
-    for f in cfg.fields:
+    for i, f in enumerate(cfg.fields):
         t = metrics[metrics["field"] == f.label].set_index("year").reindex(years)
-        counts = phrase_counts.get(f.label, {})
+        tf = fetched[f.label]
         uniq = {normalize_phrase(p): p for p in reversed(f.phrases)}  # 先に書いた語句が代表
         topics.append(
             {
                 "label": f.label,
                 "display_name": f.display_name,
+                "color": f.color if f.color >= 0 else i,
                 "phrases": [
                     {
                         "phrase": p,
-                        "count": counts.get(uniq[normalize_phrase(p)], 0),
+                        "count": tf.phrase_counts.get(uniq[normalize_phrase(p)], 0),
                         "merged_into": None if uniq[normalize_phrase(p)] == p else uniq[normalize_phrase(p)],
                     }
                     for p in f.phrases
                 ],
+                "excludes": [{"phrase": e, "count": tf.exclude_counts.get(e, 0)} for e in f.excludes],
+                "excluded": tf.excluded,
                 "series": {c: nullable(t[c]) for c in METRIC_COLUMNS},
             }
         )
-    doc = {
+    return {
         "generated_at": generated.isoformat(timespec="seconds"),
         "partial_year": generated.year if generated.year in years else None,
         "work_type": cfg.work_type,
         "default_denominator": cfg.default_denominator,
         "years": years,
         "denominators": {
-            lv: {
-                "name": names[lv],
-                "series": [int(denominators[lv].get(y, 0)) for y in years],
-            }
+            lv: {"name": names[lv], "series": [int(denominators[lv].get(y, 0)) for y in years]}
             for lv in LEVELS
         },
         "topics": topics,
     }
+
+
+def write_dashboard_json(doc: dict, out_dir: Path) -> Path:
+    out_dir.mkdir(parents=True, exist_ok=True)
     path = out_dir / JSON_NAME
     path.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
     return path

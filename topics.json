@@ -1,0 +1,42 @@
+[
+  {
+    "id": "SSM",
+    "headword": "state space model",
+    "synonyms": [
+      "dynamic linear model"
+    ],
+    "excludes": [],
+    "color": 0
+  },
+  {
+    "id": "HierBayes",
+    "headword": "hierarchical Bayes",
+    "synonyms": [
+      "hierarchical Bayesian",
+      "multilevel model"
+    ],
+    "excludes": [],
+    "color": 1
+  },
+  {
+    "id": "GP",
+    "headword": "Gaussian process",
+    "synonyms": [],
+    "excludes": [],
+    "color": 2
+  },
+  {
+    "id": "VI",
+    "headword": "variational inference",
+    "synonyms": [],
+    "excludes": [],
+    "color": 3
+  },
+  {
+    "id": "CausalInference",
+    "headword": "causal inference",
+    "synonyms": [],
+    "excludes": [],
+    "color": 4
+  }
+]
