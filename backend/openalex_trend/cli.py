@@ -5,6 +5,7 @@
     python -m openalex_trend validate   # クエリ検証
     python -m openalex_trend plan       # 推定リクエスト数・費用
     python -m openalex_trend run        # 集計 + CSV/JSON/PNG 出力
+    python -m openalex_trend diagnose   # 一致論文の subfield 分布(分母の妥当性の診断)
     python -m openalex_trend sample     # 精度検証用サンプル
 """
 
@@ -13,7 +14,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from . import validation
+from . import diagnose, validation
 from .analysis import build_trend_table
 from .client import API_KEY_ENV, BudgetExceeded, OpenAlexClient, OpenAlexError
 from .config import DEFAULT_CONFIG, Config, load_config
@@ -56,6 +57,15 @@ def cmd_validate(client: OpenAlexClient, cfg: Config, args) -> None:
     print("出力:", validation.write_report(results, cfg.output_dir))
 
 
+def cmd_diagnose(client: OpenAlexClient, cfg: Config, args) -> None:
+    _announce(client, diagnose.planned_requests(cfg))
+    if args.dry_run:
+        return
+    rows = diagnose.diagnose_all(client, cfg)
+    print(diagnose.format_report(rows))
+    print("出力:", diagnose.write_csv(rows, cfg.output_dir))
+
+
 def cmd_sample(client: OpenAlexClient, cfg: Config, args) -> None:
     if cfg.query_mode == "or":
         _announce(client, [], extra=len(cfg.fields))
@@ -65,7 +75,7 @@ def cmd_sample(client: OpenAlexClient, cfg: Config, args) -> None:
     print("出力:", write_samples(rows, cfg.output_dir / "samples"), f"({len(rows)}件)")
 
 
-COMMANDS = {"plan": cmd_plan, "run": cmd_run, "validate": cmd_validate, "sample": cmd_sample}
+COMMANDS = {"plan": cmd_plan, "run": cmd_run, "validate": cmd_validate, "sample": cmd_sample, "diagnose": cmd_diagnose}
 
 
 def main(argv: list[str] | None = None) -> int:

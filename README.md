@@ -38,6 +38,7 @@ export OPENALEX_API_KEY=xxxx     # コードにも出力にも残らない
 python -m openalex_trend validate --dry-run   # 推定リクエスト数だけ見る(通信しない)
 python -m openalex_trend validate             # OR条件・フレーズ指定の検証 -> outputs/validation.json
 python -m openalex_trend run                  # 集計 -> outputs/title_trend.csv, summary.json, title_trend_ratio.png
+python -m openalex_trend diagnose             # 一致論文の subfield 分布 -> outputs/subfield_distribution.csv
 python -m openalex_trend sample               # 精度検証用サンプル -> outputs/samples/precision_samples.csv
 python -m pytest -q                           # テスト(APIはモック)
 ```

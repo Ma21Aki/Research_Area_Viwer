@@ -172,3 +172,32 @@ def test_サンプルのseedを変えると抽出が変わる(make_client, make_
     client2, _, _ = make_client(cfg=cfg2)
     b = sample_all(client2, cfg2)
     assert {r["work_id"] for r in a} != {r["work_id"] for r in b}
+
+
+# ---- 診断(subfield 分布) ----------------------------------------------
+def test_診断は_subfieldで絞らずに分布を数える(make_client):
+    from openalex_trend import diagnose
+
+    client, server, cfg = make_client()
+    # 別 subfield の論文もタイトルに語句があれば数える(対象 subfield だけに絞らない)
+    rows = diagnose.diagnose_all(client, cfg)
+    ssm = [r for r in rows if r["field"] == "SSM" and r["level"] == "subfield"]
+    by_id = {r["topic_id"]: r for r in ssm}
+    assert by_id["subfields/2613"]["count"] == 13
+    assert by_id["subfields/9999"]["count"] == 1  # 2021年の別subfield論文(1980年は年範囲外)
+    assert by_id["subfields/2613"]["is_target"] == 1 and by_id["subfields/9999"]["is_target"] == 0
+    assert [r["rank"] for r in ssm] == [1, 2]
+    assert sum(r["share"] for r in ssm) == pytest.approx(1.0)
+    assert diagnose.target_share(rows)["SSM"] == pytest.approx(13 / 14)
+    assert all("filter" in c and "primary_topic.subfield.id" not in c["filter"] for c in server.calls)
+
+
+def test_診断の出力とリクエスト数(make_client, tmp_path):
+    from openalex_trend import diagnose
+
+    client, _, cfg = make_client()
+    assert len(diagnose.planned_requests(cfg)) == len(cfg.fields) * 2
+    rows = diagnose.diagnose_all(client, cfg)
+    path = diagnose.write_csv(rows, tmp_path / "o")
+    assert path.read_text(encoding="utf-8-sig").startswith("field,level,rank,topic_id")
+    assert "対象 subfield に入る割合" in diagnose.format_report(rows)
