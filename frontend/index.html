@@ -12,13 +12,13 @@
 <meta name="theme-color" content="#1c5cab">
 <style>
 :root {
-  --surface: #fcfcfb; --page: #f9f9f7; --ink: #0b0b0b; --ink2: #52514e; --grid: #e4e3df;
-  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4;
+  --surface: #fcfcfb; --page: #f9f9f7; --ink: #0b0b0b; --ink2: #52514e; --grid: #e4e3df; --accent: #1c5cab;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface: #1a1a19; --page: #0d0d0d; --ink: #f0efec; --ink2: #c3c2b7; --grid: #383835;
-    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
+    --surface: #1a1a19; --page: #0d0d0d; --ink: #f0efec; --ink2: #c3c2b7; --grid: #383835; --accent: #6da7ec;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
   }
 }
 * { box-sizing: border-box; }
@@ -27,19 +27,34 @@ body { margin: 0; background: var(--page); color: var(--ink);
   padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom); }
 main { max-width: 960px; margin: 0 auto; padding: 16px 0 32px; }
 h1 { font-size: 18px; margin: 0 0 4px; }
-.meta { color: var(--ink2); font-size: 12px; margin: 0 0 12px; }
+h2 { font-size: 13px; color: var(--ink2); font-weight: 600; margin: 0 0 6px; }
+.meta, .note { color: var(--ink2); font-size: 12px; margin: 0 0 12px; }
+.note { margin: 8px 0 0; }
 .card { background: var(--surface); border-radius: 12px; padding: 12px; margin-bottom: 12px; }
-svg { width: 100%; aspect-ratio: 1 / 0.68; display: block; touch-action: pan-y; }
-.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--ink2); margin: 8px 0 0; }
-.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; }
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-th, td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--grid); }
-th:first-child, td:first-child { text-align: left; }
-th { color: var(--ink2); font-weight: 500; white-space: nowrap; }
-.up { color: var(--ink); } .note { color: var(--ink2); font-size: 12px; }
-#tip { position: absolute; pointer-events: none; background: var(--surface); color: var(--ink);
-  border: 1px solid var(--grid); border-radius: 8px; padding: 6px 8px; font-size: 12px; display: none; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+.group { margin-bottom: 10px; } .group:last-child { margin-bottom: 0; }
+button.opt, button.chip { min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--grid);
+  background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; }
+button.opt[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+button:disabled { opacity: .4; cursor: default; }
+button.chip { display: inline-flex; align-items: center; gap: 8px; }
+button.chip i { width: 12px; height: 12px; border-radius: 3px; background: var(--c); border: 2px solid var(--c); }
+button.chip[aria-pressed="false"] i { background: transparent; }
+button.chip[aria-pressed="false"] { color: var(--ink2); }
+svg { width: 100%; display: block; touch-action: pan-y; }
 .wrap { position: relative; }
+#tip { position: absolute; pointer-events: none; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--grid); border-radius: 8px; padding: 6px 8px; font-size: 12px; display: none; max-width: 70%; }
+#tip i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; white-space: normal; }
+th { color: var(--ink2); font-weight: 500; }
+details { border-top: 1px solid var(--grid); padding: 8px 0; font-size: 13px; }
+details:first-of-type { border-top: 0; }
+summary { cursor: pointer; min-height: 32px; display: flex; align-items: center; gap: 8px; }
+.phr { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 0 0 20px; color: var(--ink2); }
+.phr span { border: 1px solid var(--grid); border-radius: 8px; padding: 2px 8px; }
 #error { color: var(--ink); }
 </style>
 </head>
@@ -48,9 +63,18 @@ th { color: var(--ink2); font-weight: 500; white-space: nowrap; }
   <h1>研究領域興隆可視化ダッシュボード</h1>
   <p class="meta" id="meta">読み込み中…</p>
   <p id="error" class="card" hidden></p>
-  <div class="card wrap"><svg id="chart" role="img" aria-label="分野別のタイトル出現率の推移"></svg><div id="tip"></div><div class="legend" id="legend"></div></div>
-  <div class="card"><table id="table"></table>
-    <p class="note">比率 = タイトルに語句を含む論文数 / 同一 subfield の論文数。移動平均は当該年を含む直近3年。</p></div>
+
+  <div class="card" id="controls" hidden>
+    <div class="group"><h2>指標</h2><div class="row" id="metrics"></div></div>
+    <div class="group" id="scopeBox"><h2>集計範囲(分母)</h2><div class="row" id="scopes"></div></div>
+    <div class="group"><h2>表示</h2><div class="row" id="smooth"></div></div>
+    <div class="group"><h2>トピック(タップで表示/非表示)</h2><div class="row" id="topics"></div></div>
+  </div>
+
+  <div class="card wrap"><svg id="chart" role="img" aria-label="トピック別の推移"></svg><div id="tip"></div>
+    <p class="note" id="chartNote"></p></div>
+  <div class="card"><table id="table"></table><p class="note" id="tableNote"></p></div>
+  <div class="card"><h2>検出語句(各トピックは語句の OR。件数は取得できた論文数)</h2><div id="phrases"></div></div>
 </main>
 <script src="app.js"></script>
 <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});</script>

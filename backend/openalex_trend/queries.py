@@ -2,9 +2,18 @@
 
 from __future__ import annotations
 
-from .config import Config, Field
+import re
+
+from .config import Config
 
 PAGE_SIZE = 200  # OpenAlex の per_page 上限
+LEVELS = ("all", "field", "subfield")  # 出現率の分母の切替(広い順)
+
+# 論文単位で取得する項目。集計はすべて手元で行う(分母の切替・被引用の指標のため)
+WORK_SELECT = (
+    "id,title,publication_year,cited_by_count,counts_by_year,fwci,"
+    "citation_normalized_percentile,primary_topic"
+)
 
 
 def quote(phrase: str) -> str:
@@ -17,51 +26,69 @@ def or_query(phrases) -> str:
     return " OR ".join(quote(p) for p in phrases)
 
 
+def normalize_phrase(phrase: str) -> str:
+    """ハイフン・大小・空白の違いを畳む(OpenAlex 側でも同一視されるため重複取得を避ける)。"""
+    return re.sub(r"\s+", " ", phrase.lower().replace("-", " ")).strip()
+
+
+def unique_phrases(phrases) -> list[str]:
+    """正規化して重複する語句を除く(先に書かれた方を残す)。"""
+    seen: dict[str, str] = {}
+    for p in phrases:
+        seen.setdefault(normalize_phrase(p), p)
+    return list(seen.values())
+
+
+def year_filter(cfg: Config) -> str:
+    """全論文の母集団: 対象年の範囲と論文種別。"""
+    f = f"publication_year:{cfg.year_from}-{cfg.year_to}"
+    return f + (f",type:{cfg.work_type}" if cfg.work_type else "")
+
+
 def base_filter(cfg: Config) -> str:
-    """分母・分子で共通の母集団。
+    """同一 subfield の母集団。
 
     1論文に最大3つの Topic が付くため、subfield は primary_topic 側で絞る
     (topics.subfield だと同じ論文が複数の subfield で重複計上される)。
     """
-    return (
-        f"primary_topic.subfield.id:{cfg.subfield_id},"
-        f"publication_year:{cfg.year_from}-{cfg.year_to}"
-    )
+    return f"{year_filter(cfg)},primary_topic.subfield.id:{cfg.subfield_id}"
 
 
-def denominator_params(cfg: Config) -> dict:
-    """分母: 同一 subfield の年別論文数。group_by は1リクエストにつき1つ。"""
+def level_filter(cfg: Config, level: str) -> str:
+    if level == "all":
+        return year_filter(cfg)
+    if level == "field":
+        return f"{year_filter(cfg)},primary_topic.field.id:{cfg.oa_field_id}"
+    if level == "subfield":
+        return base_filter(cfg)
+    raise ValueError(f"未定義の分母: {level}")
+
+
+def denominator_params(cfg: Config, level: str = "subfield") -> dict:
+    """分母: 母集団の年別論文数。group_by は1リクエストにつき1つ。"""
     return {
-        "filter": base_filter(cfg),
+        "filter": level_filter(cfg, level),
         "group_by": "publication_year",
         "per_page": PAGE_SIZE,
-    }
-
-
-def numerator_params(cfg: Config, field: Field) -> dict:
-    """分子(or方式): タイトルが語句のいずれかに一致した論文の年別件数。"""
-    return {
-        **denominator_params(cfg),
-        cfg.search_param: or_query(field.phrases),
     }
 
 
 def count_params(cfg: Config, query: str) -> dict:
     """検索式に一致する総件数だけを取る(meta.count を読む)。"""
     return {
-        "filter": base_filter(cfg),
+        "filter": year_filter(cfg),
         cfg.search_param: query,
         "per_page": 1,
         "select": "id",
     }
 
 
-def id_pages_params(cfg: Config, query: str) -> dict:
-    """work ID と年の一覧をカーソルページングで取るための初回パラメータ。"""
+def works_params(cfg: Config, phrase: str) -> dict:
+    """1語句に一致する論文を cursor ページングで全件取るための初回パラメータ。"""
     return {
-        "filter": base_filter(cfg),
-        cfg.search_param: query,
+        "filter": year_filter(cfg),
+        cfg.search_param: quote(phrase),
         "per_page": PAGE_SIZE,
-        "select": "id,publication_year",
+        "select": WORK_SELECT,
         "cursor": "*",
     }

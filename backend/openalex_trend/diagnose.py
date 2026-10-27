@@ -11,7 +11,7 @@ from pathlib import Path
 
 from .client import OpenAlexClient
 from .config import Config, Field
-from .queries import PAGE_SIZE, or_query
+from .queries import PAGE_SIZE, or_query, year_filter
 
 LEVELS = {"subfield": "primary_topic.subfield.id", "field": "primary_topic.field.id"}
 COLUMNS = ["field", "level", "rank", "topic_id", "topic_name", "count", "share", "is_target"]
@@ -20,7 +20,7 @@ COLUMNS = ["field", "level", "rank", "topic_id", "topic_name", "count", "share",
 def params_for(cfg: Config, f: Field, group_by: str) -> dict:
     """subfield では絞らず、対象年の範囲とタイトル検索だけで集計する。"""
     return {
-        "filter": f"publication_year:{cfg.year_from}-{cfg.year_to}",
+        "filter": year_filter(cfg),
         cfg.search_param: or_query(f.phrases),
         "group_by": group_by,
         "per_page": PAGE_SIZE,

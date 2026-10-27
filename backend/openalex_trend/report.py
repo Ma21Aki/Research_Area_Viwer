@@ -16,18 +16,21 @@ import matplotlib.pyplot as plt  # noqa: E402
 import pandas as pd  # noqa: E402
 
 from .config import Config  # noqa: E402
+from .dataset import METRIC_COLUMNS, nullable  # noqa: E402
+from .queries import LEVELS, normalize_phrase  # noqa: E402
 
 # 検証済みの categorical パレット(薄い黄・緑などはコントラスト不足のため、
 # 凡例・線端の直接ラベル・マーカー形状でも系列を識別できるようにしている)
-SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]
-SERIES_MARKERS = ["o", "s", "^", "D", "v"]
+SERIES_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"]
+SERIES_MARKERS = ["o", "s", "^", "D", "v", "P", "X", "h"]
 SURFACE = "#fcfcfb"
 INK = "#0b0b0b"
 INK_SECONDARY = "#52514e"
 GRID = "#e4e3df"
 
 CSV_NAME = "title_trend.csv"
-JSON_NAME = "summary.json"
+JSON_NAME = "dashboard.json"
+METRICS_CSV_NAME = "topic_metrics.csv"
 PNG_NAME = "title_trend_ratio.png"
 
 
@@ -38,33 +41,59 @@ def write_csv(table: pd.DataFrame, out_dir: Path) -> Path:
     return path
 
 
-def _nullable(values) -> list[float | None]:
-    return [None if pd.isna(v) else float(v) for v in values]
+def write_metrics_csv(metrics: pd.DataFrame, out_dir: Path) -> Path:
+    """全指標を縦持ちで出力(分母の3水準・出現率・被引用の指標)。"""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / METRICS_CSV_NAME
+    metrics.to_csv(path, index=False, float_format="%.8g")
+    return path
 
 
-def write_summary_json(cfg: Config, table: pd.DataFrame, out_dir: Path) -> Path:
-    """フロントエンドが読む JSON。欠損は null にする。"""
-    fields = []
+def write_dashboard_json(
+    cfg: Config,
+    metrics: pd.DataFrame,
+    denominators: dict[str, pd.Series],
+    phrase_counts: dict[str, dict[str, int]],
+    out_dir: Path,
+) -> Path:
+    """フロントエンド用 JSON。出現率・移動平均は画面側で計算するので、素の件数と指標だけを渡す。"""
+    years = list(cfg.years)
+    generated = datetime.now(timezone.utc)
+    names = {"all": "全論文", "field": cfg.oa_field_name, "subfield": cfg.subfield_name}
+    topics = []
     for f in cfg.fields:
-        t = table[table["field"] == f.label]
-        fields.append(
+        t = metrics[metrics["field"] == f.label].set_index("year").reindex(years)
+        counts = phrase_counts.get(f.label, {})
+        uniq = {normalize_phrase(p): p for p in reversed(f.phrases)}  # 先に書いた語句が代表
+        topics.append(
             {
                 "label": f.label,
                 "display_name": f.display_name,
-                "phrases": list(f.phrases),
-                "years": t["year"].astype(int).tolist(),
-                "count": t["count"].astype(int).tolist(),
-                "denominator": t["denominator"].astype(int).tolist(),
-                "ratio": _nullable(t["ratio"]),
-                "ratio_yoy": _nullable(t["ratio_yoy"]),
-                "ratio_ma3": _nullable(t["ratio_ma3"]),
+                "phrases": [
+                    {
+                        "phrase": p,
+                        "count": counts.get(uniq[normalize_phrase(p)], 0),
+                        "merged_into": None if uniq[normalize_phrase(p)] == p else uniq[normalize_phrase(p)],
+                    }
+                    for p in f.phrases
+                ],
+                "series": {c: nullable(t[c]) for c in METRIC_COLUMNS},
             }
         )
     doc = {
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "subfield": {"id": cfg.subfield_id, "name": cfg.subfield_name},
-        "query_mode": cfg.query_mode,
-        "fields": fields,
+        "generated_at": generated.isoformat(timespec="seconds"),
+        "partial_year": generated.year if generated.year in years else None,
+        "work_type": cfg.work_type,
+        "default_denominator": cfg.default_denominator,
+        "years": years,
+        "denominators": {
+            lv: {
+                "name": names[lv],
+                "series": [int(denominators[lv].get(y, 0)) for y in years],
+            }
+            for lv in LEVELS
+        },
+        "topics": topics,
     }
     path = out_dir / JSON_NAME
     path.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -99,7 +128,8 @@ def plot_ratio(cfg: Config, table: pd.DataFrame, out_dir: Path) -> Path:
     ax.set_ylim(bottom=0)
     ax.set_xticks(range(cfg.year_from - cfg.year_from % 5, cfg.year_to + 1, 5))  # ラベル用の余白に目盛りを出さない
     ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: f"{v:.1%}"))
-    ax.set_ylabel(f"Share of titles in subfield ({cfg.subfield_name})",
+    base = {"all": "all works", "field": cfg.oa_field_name, "subfield": cfg.subfield_name}
+    ax.set_ylabel(f"Share of titles among {base[cfg.default_denominator]}",
                   color=INK_SECONDARY, fontsize=9)
     ax.set_title("Title occurrence rate by research field (OpenAlex)",
                  color=INK, fontsize=11, loc="left")
