@@ -39,6 +39,8 @@ jobs:
     if: github.event_name == 'workflow_dispatch'
     needs: test
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 結果を results ブランチへ push するため
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -72,6 +74,24 @@ jobs:
         if: inputs.command == 'run' && inputs.publish_pages
         with:
           path: _site
+      # zip を開けないスマホでも、GitHub アプリで results ブランチの latest/ を直接開ける。
+      # 作業ツリーを切り替えるため、必ず最後の手順に置く。main には触れない。実行ごとに上書きされるのは今回出力したファイルだけ
+      - name: 結果を results ブランチに保存
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp -r outputs /tmp/out
+          if git fetch origin results 2>/dev/null; then
+            git checkout -q -f -B results FETCH_HEAD
+          else
+            git checkout -q --orphan results
+            git rm -rq -f .
+          fi
+          mkdir -p latest
+          cp -r /tmp/out/. latest/
+          git add latest
+          git diff --cached --quiet || git commit -q -m "結果を更新 (${{ inputs.command }}, run ${{ github.run_id }})"
+          git push origin results
 
   deploy:
     if: github.event_name == 'workflow_dispatch' && inputs.command == 'run' && inputs.publish_pages
