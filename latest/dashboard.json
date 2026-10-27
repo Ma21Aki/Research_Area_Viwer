@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-27T10:22:02+00:00",
+ "generated_at": "2026-10-27T13:17:42+00:00",
  "partial_year": 2026,
  "work_type": "article",
  "default_denominator": "all",
@@ -173,7 +173,8 @@
  "topics": [
   {
    "label": "SSM",
-   "display_name": "State space model",
+   "display_name": "state space model",
+   "color": 0,
    "phrases": [
     {
      "phrase": "state space model",
@@ -181,16 +182,13 @@
      "merged_into": null
     },
     {
-     "phrase": "state-space model",
-     "count": 3748,
-     "merged_into": "state space model"
-    },
-    {
      "phrase": "dynamic linear model",
      "count": 256,
      "merged_into": null
     }
    ],
+   "excludes": [],
+   "excluded": 0,
    "series": {
     "count_all": [
      19.0,
@@ -469,7 +467,8 @@
   },
   {
    "label": "HierBayes",
-   "display_name": "Hierarchical Bayes",
+   "display_name": "hierarchical Bayes",
+   "color": 1,
    "phrases": [
     {
      "phrase": "hierarchical Bayes",
@@ -487,6 +486,8 @@
      "merged_into": null
     }
    ],
+   "excludes": [],
+   "excluded": 0,
    "series": {
     "count_all": [
      11.0,
@@ -766,6 +767,7 @@
   {
    "label": "GP",
    "display_name": "Gaussian process",
+   "color": 2,
    "phrases": [
     {
      "phrase": "Gaussian process",
@@ -773,6 +775,8 @@
      "merged_into": null
     }
    ],
+   "excludes": [],
+   "excluded": 0,
    "series": {
     "count_all": [
      17.0,
@@ -1051,7 +1055,8 @@
   },
   {
    "label": "VI",
-   "display_name": "Variational inference",
+   "display_name": "variational inference",
+   "color": 3,
    "phrases": [
     {
      "phrase": "variational inference",
@@ -1059,6 +1064,8 @@
      "merged_into": null
     }
    ],
+   "excludes": [],
+   "excluded": 0,
    "series": {
     "count_all": [
      0.0,
@@ -1337,7 +1344,8 @@
   },
   {
    "label": "CausalInference",
-   "display_name": "Causal inference",
+   "display_name": "causal inference",
+   "color": 4,
    "phrases": [
     {
      "phrase": "causal inference",
@@ -1345,6 +1353,8 @@
      "merged_into": null
     }
    ],
+   "excludes": [],
+   "excluded": 0,
    "series": {
     "count_all": [
      8.0,
