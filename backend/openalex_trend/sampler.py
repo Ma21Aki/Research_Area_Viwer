@@ -31,7 +31,7 @@ def _row(label: str, w: Work) -> dict:
 def sample_all(client: OpenAlexClient, cfg: Config) -> list[dict]:
     rows: list[dict] = []
     for f in cfg.fields:
-        works, _ = fetch_topic_works(client, cfg, f)
+        works = fetch_topic_works(client, cfg, f).works  # 除外語句を当てた後の論文から抽出
         ids = sorted(works)  # 取得順に依らず、同じ集合なら同じ抽出になる
         picked = random.Random(cfg.sample_seed).sample(ids, min(cfg.sample_size, len(ids)))
         rows += sorted((_row(f.label, works[i]) for i in picked), key=lambda r: r["work_id"])

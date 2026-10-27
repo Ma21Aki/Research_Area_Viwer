@@ -24,39 +24,13 @@ population:
   subfield_id: subfields/2613
   subfield_name: Statistics and Probability
 
-fields:
-  # トピックの追加: ここに項目を足すだけでよい。語句ごとの取得結果はキャッシュされ、
-  # 既存トピックは再検索されない(語句を足したときも、新しい語句の分だけ取得する)
-  - label: SSM
-    display_name: State space model
-    phrases:
-      - state space model
-      - state-space model
-      - dynamic linear model
-  - label: HierBayes
-    display_name: Hierarchical Bayes
-    phrases:
-      - hierarchical Bayes
-      - hierarchical Bayesian
-      - multilevel model
-  - label: GP
-    display_name: Gaussian process
-    phrases:
-      - Gaussian process
-  - label: VI
-    display_name: Variational inference
-    phrases:
-      - variational inference
-  - label: CausalInference
-    display_name: Causal inference
-    phrases:
-      - causal inference
-
 sampling:
   size: 100
   seed: 20260101
 
 # リポジトリルートからの相対パス
 paths:
+  # トピック(見出し語句・言い換え・除外語句)。PC版の画面から編集できる
+  topics: topics.json
   cache_dir: data/cache
   output_dir: outputs

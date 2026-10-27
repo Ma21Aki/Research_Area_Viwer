@@ -7,10 +7,12 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass, field
+from typing import Callable
 
 from .client import OpenAlexClient
 from .config import Config, Field
 from .counts import iter_works, total_count
+from .text import phrase_pattern, title_matches
 from .queries import (
     LEVELS,
     PAGE_SIZE,
@@ -70,17 +72,45 @@ def fetch_phrase_works(client: OpenAlexClient, cfg: Config, phrase: str) -> dict
     return {w["id"]: parse_work(w) for w in iter_works(client, works_params(cfg, phrase))}
 
 
+@dataclass
+class TopicFetch:
+    """1トピックの取得結果。works は除外語句を適用した後の論文。"""
+
+    works: dict[str, Work]
+    phrase_counts: dict[str, int]  # 語句ごとの一致件数(除外前)
+    exclude_counts: dict[str, int]  # 除外語句ごとの一致件数(重複あり)
+    excluded: int  # 除外した論文数(重複なし)
+
+
+def apply_excludes(works: dict[str, Work], excludes) -> tuple[dict[str, Work], dict[str, int]]:
+    """除外語句をタイトルに含む論文を外す。単語単位・複数形も一致(text.phrase_pattern)。"""
+    pats = {e: phrase_pattern(e) for e in excludes}
+    counts = {e: 0 for e in excludes}
+    kept: dict[str, Work] = {}
+    for wid, w in works.items():
+        hit = [e for e, p in pats.items() if title_matches(w.title, p)]
+        for e in hit:
+            counts[e] += 1
+        if not hit:
+            kept[wid] = w
+    return kept, counts
+
+
+PhraseFetcher = Callable[[OpenAlexClient, Config, str], dict[str, Work]]
+
+
 def fetch_topic_works(
-    client: OpenAlexClient, cfg: Config, f: Field
-) -> tuple[dict[str, Work], dict[str, int]]:
-    """トピックの全論文(語句ごとの結果を work ID で和集合)と、語句ごとの件数。"""
+    client: OpenAlexClient, cfg: Config, f: Field, fetch_phrase: PhraseFetcher = fetch_phrase_works
+) -> TopicFetch:
+    """トピックの全論文(語句ごとの結果を work ID で和集合)に除外語句を当てる。"""
     merged: dict[str, Work] = {}
     per_phrase: dict[str, int] = {}
     for phrase in unique_phrases(f.phrases):
-        works = fetch_phrase_works(client, cfg, phrase)
+        works = fetch_phrase(client, cfg, phrase)
         per_phrase[phrase] = len(works)
         merged.update(works)
-    return merged, per_phrase
+    kept, exc = apply_excludes(merged, f.excludes)
+    return TopicFetch(kept, per_phrase, exc, len(merged) - len(kept))
 
 
 def plan_requests(client: OpenAlexClient, cfg: Config) -> tuple[list[dict], int]:

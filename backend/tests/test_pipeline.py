@@ -8,7 +8,7 @@ from fake_openalex import FakeOpenAlex, make_corpus
 from openalex_trend import diagnose, validation
 from openalex_trend.analysis import default_trend_table
 from openalex_trend.counts import fetch_denominators, iter_works, total_count
-from openalex_trend.dataset import add_ratios, build_metrics
+from openalex_trend.pipeline import build
 from openalex_trend.queries import (
     count_params,
     normalize_phrase,
@@ -44,12 +44,8 @@ def _is_ssm(w):
 
 
 def _build(client, cfg):
-    denominators = fetch_denominators(client, cfg)
-    topic_works, phrase_counts = {}, {}
-    for f in cfg.fields:
-        topic_works[f.label], phrase_counts[f.label] = fetch_topic_works(client, cfg, f)
-    metrics = add_ratios(cfg, build_metrics(cfg, topic_works), denominators)
-    return denominators, topic_works, phrase_counts, metrics
+    r = build(client, cfg)
+    return r.denominators, r.fetched, r.doc, r.metrics
 
 
 # ---- 分母(3水準) -------------------------------------------------------
@@ -84,7 +80,8 @@ def test_論文種別で絞ると分母にも分子にも効く(make_cfg, make_c
 # ---- 語句ごとの取得と和集合 -----------------------------------------------
 def test_語句ごとに取得し_work_IDで和集合を取る(make_client):
     client, _, cfg = make_client()
-    works, per_phrase = fetch_topic_works(client, cfg, cfg.field("SSM"))
+    tf = fetch_topic_works(client, cfg, cfg.field("SSM"))
+    works, per_phrase = tf.works, tf.phrase_counts
     assert len(works) == sum(_by_year(make_corpus(), _is_ssm))
     # ハイフン違いは同一視して1回だけ取得し、重複を数えない
     assert set(per_phrase) == {"state space model", "dynamic linear model"}
@@ -154,7 +151,7 @@ def test_出力ファイル(make_client):
     client, _, cfg = make_client()
     F = type(cfg.fields[0])
     object.__setattr__(cfg, "fields", (F("SSM", "State space model", tuple(SSM_PHRASES)), cfg.fields[1]))
-    denominators, _, phrase_counts, metrics = _build(client, cfg)
+    denominators, _, doc_built, metrics = _build(client, cfg)
     out = cfg.output_dir
     trend = default_trend_table(cfg, metrics, denominators)
     assert list(trend.columns) == [
@@ -162,7 +159,7 @@ def test_出力ファイル(make_client):
     ]
     csv_path = write_csv(trend, out)
     m_path = write_metrics_csv(metrics, out)
-    j_path = write_dashboard_json(cfg, metrics, denominators, phrase_counts, out)
+    j_path = write_dashboard_json(doc_built, out)
     png = plot_ratio(cfg, trend, out)
     row = pd.read_csv(csv_path).query("field == 'SSM' and year == 2021").iloc[0]
     assert row["ratio"] == pytest.approx(row["count"] / row["denominator"])

@@ -7,6 +7,8 @@ from pathlib import Path
 
 import yaml
 
+from .topics import load_topics
+
 # backend/openalex_trend/config.py -> リポジトリルート
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CONFIG = REPO_ROOT / "backend" / "config.yaml"
@@ -19,6 +21,8 @@ class Field:
     label: str
     display_name: str
     phrases: tuple[str, ...]
+    excludes: tuple[str, ...] = ()  # タイトルに含む論文を集計から外す語句
+    color: int = -1  # 画面の色番号(-1 は並び順で決める)
 
 
 @dataclass(frozen=True)
@@ -43,6 +47,7 @@ class Config:
     sample_seed: int
     cache_dir: Path
     output_dir: Path
+    topics_path: Path
 
     @property
     def years(self) -> range:
@@ -55,14 +60,36 @@ class Config:
         raise KeyError(f"未定義の分野ラベル: {label}")
 
 
+def fields_from_topics(topics: list[dict]) -> tuple[Field, ...]:
+    """topics.json の定義を検索用の Field にする(検索語 = 見出し語句 + 言い換え)。"""
+    return tuple(
+        Field(t["id"], t["headword"], (t["headword"], *t["synonyms"]), tuple(t["excludes"]),
+              t.get("color", -1))
+        for t in topics
+    )
+
+
+def topics_from_fields(fields) -> list[dict]:
+    return [
+        {"id": f.label, "headword": f.phrases[0], "synonyms": list(f.phrases[1:]),
+         "excludes": list(f.excludes), "color": f.color if f.color >= 0 else i}
+        for i, f in enumerate(fields)
+    ]
+
+
 def load_config(path: Path | str = DEFAULT_CONFIG, root: Path = REPO_ROOT) -> Config:
     """YAML を読んで Config を返す。不正な設定は ValueError にする。"""
     raw = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
     api, pop = raw["openalex"], raw["population"]
-    fields = tuple(
-        Field(f["label"], f.get("display_name", f["label"]), tuple(f["phrases"]))
-        for f in raw["fields"]
-    )
+    topics_path = root / raw["paths"].get("topics", "topics.json")
+    if "fields" in raw:  # 旧形式(config.yaml に直接書く)。テスト用にも残す
+        fields = tuple(
+            Field(f["label"], f.get("display_name", f["label"]), tuple(f["phrases"]),
+                  tuple(f.get("excludes", ())))
+            for f in raw["fields"]
+        )
+    else:
+        fields = fields_from_topics(load_topics(topics_path))
     cfg = Config(
         base_url=api["base_url"],
         search_param=api.get("search_param", "search.title"),
@@ -84,6 +111,7 @@ def load_config(path: Path | str = DEFAULT_CONFIG, root: Path = REPO_ROOT) -> Co
         sample_seed=int(raw.get("sampling", {}).get("seed", 0)),
         cache_dir=root / raw["paths"]["cache_dir"],
         output_dir=root / raw["paths"]["output_dir"],
+        topics_path=topics_path,
     )
     _validate(cfg)
     return cfg
