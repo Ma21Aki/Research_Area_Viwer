@@ -9,6 +9,10 @@ on:
         type: choice
         options: [validate, run, sample]
         default: validate
+      publish_pages:
+        description: "run のとき GitHub Pages に公開する(既定はオフ。公開範囲を確認してから有効にする)"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: ["backend/**", ".github/workflows/analyze.yml"]
@@ -59,18 +63,18 @@ jobs:
           name: outputs
           path: outputs/
       - name: 公開用サイトを組み立てる
-        if: inputs.command == 'run'
+        if: inputs.command == 'run' && inputs.publish_pages
         run: |
           mkdir -p _site/data
           cp -r frontend/. _site/
           cp outputs/summary.json outputs/title_trend.csv outputs/title_trend_ratio.png _site/data/
       - uses: actions/upload-pages-artifact@v3
-        if: inputs.command == 'run'
+        if: inputs.command == 'run' && inputs.publish_pages
         with:
           path: _site
 
   deploy:
-    if: github.event_name == 'workflow_dispatch' && inputs.command == 'run'
+    if: github.event_name == 'workflow_dispatch' && inputs.command == 'run' && inputs.publish_pages
     needs: analyze
     runs-on: ubuntu-latest
     permissions:

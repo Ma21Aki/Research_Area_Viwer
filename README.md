@@ -19,7 +19,7 @@ data/cache/  APIレスポンスのキャッシュ(git管理外)
 1. GitHub のリポジトリ設定 → Secrets and variables → Actions で `OPENALEX_API_KEY` を登録する(キーは https://openalex.org/settings/api で無料取得)。
 2. Actions タブ → `analyze` → Run workflow。最初は `validate`(クエリ検証)を選ぶ。
 3. `outputs` アーティファクトの `validation.json` で OR 条件が効いているか確認する。NG なら `backend/config.yaml` の `query_mode` を `union` に変える。
-4. `run` を選んで実行すると、集計結果が GitHub Pages に公開される。公開された URL を Safari で開き、共有ボタン →「ホーム画面に追加」でアイコンから起動できる。
+4. `run` を選んで実行すると、集計結果が `outputs` アーティファクトに出る。`publish_pages` をオンにした場合だけ GitHub Pages に公開される(公開範囲を確認してから)。公開された URL を Safari で開き、共有ボタン →「ホーム画面に追加」でアイコンから起動できる。
 5. 精度確認は `sample` を実行し、`outputs/samples/precision_samples.csv` の `label` 列に「主題 / 非主題」を記入する。
 
 注意: API キーはブラウザ側(フロント)には置かない。キーはバックエンド(Actions)だけが読む。
