@@ -1,0 +1,58 @@
+# 研究領域興隆可視化: 設定ファイル
+# 語句は二重引用符なしで書く(コード側でフレーズ指定の引用符を付ける)
+
+openalex:
+  base_url: https://api.openalex.org/works
+  # タイトル検索のパラメータ名。旧形式 title.search は非推奨のため使わない
+  search_param: search.title
+  # or: 語句をOR条件でまとめて1クエリ / union: 語句ごとに取得して work ID で和集合
+  # validate_queries で OR 条件が効いていないと判定されたら union に切り替える
+  query_mode: or
+  rate_limit_per_sec: 30
+  max_retries: 5
+  timeout_sec: 30
+  # 1リクエストあたりの推定費用(USD)と1日の上限。単価は公式の料金表で要確認
+  cost_per_request_usd: 0.0001
+  daily_budget_usd: 1.0
+
+population:
+  # 分母: 同一 subfield の年別論文数。Statistics and Probability = subfields/2613
+  subfield_id: subfields/2613
+  subfield_name: Statistics and Probability
+  year_from: 1990
+  year_to: 2025
+
+fields:
+  - label: SSM
+    display_name: State space model
+    phrases:
+      - state space model
+      - state-space model
+      - dynamic linear model
+  - label: HierBayes
+    display_name: Hierarchical Bayes
+    phrases:
+      - hierarchical Bayes
+      - hierarchical Bayesian
+      - multilevel model
+  - label: GP
+    display_name: Gaussian process
+    phrases:
+      - Gaussian process
+  - label: VI
+    display_name: Variational inference
+    phrases:
+      - variational inference
+  - label: CausalInference
+    display_name: Causal inference
+    phrases:
+      - causal inference
+
+sampling:
+  size: 100
+  seed: 20260101
+
+# リポジトリルートからの相対パス
+paths:
+  cache_dir: data/cache
+  output_dir: outputs

@@ -1,0 +1,84 @@
+name: analyze
+
+# iPhone の GitHub アプリ(Actions タブ)や Safari から手動で実行する
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "実行するコマンド (validate=クエリ検証 / run=集計と公開 / sample=精度検証用サンプル)"
+        type: choice
+        options: [validate, run, sample]
+        default: validate
+  push:
+    branches: [main]
+    paths: ["backend/**", ".github/workflows/analyze.yml"]
+    # push 時はテストだけ走らせる(API は叩かない)。下の if で分岐
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: pip install -r backend/requirements.txt
+      - run: python -m pytest -q
+        working-directory: backend
+
+  analyze:
+    if: github.event_name == 'workflow_dispatch'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: pip install -r backend/requirements.txt
+      # API レスポンスのキャッシュを実行間で引き継ぎ、無駄なクエリを打たない
+      - uses: actions/cache@v4
+        with:
+          path: data/cache
+          key: openalex-cache-${{ github.run_id }}
+          restore-keys: openalex-cache-
+      - name: 実行
+        working-directory: backend
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+        run: python -m openalex_trend ${{ inputs.command }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: outputs
+          path: outputs/
+      - name: 公開用サイトを組み立てる
+        if: inputs.command == 'run'
+        run: |
+          mkdir -p _site/data
+          cp -r frontend/. _site/
+          cp outputs/summary.json outputs/title_trend.csv outputs/title_trend_ratio.png _site/data/
+      - uses: actions/upload-pages-artifact@v3
+        if: inputs.command == 'run'
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name == 'workflow_dispatch' && inputs.command == 'run'
+    needs: analyze
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

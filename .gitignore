@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+# APIレスポンスのキャッシュは再生成できるのでコミットしない
+data/cache/
+# outputs/ は GitHub Actions が生成する。ローカル実行分は誤コミット防止のため無視
+outputs/*
+!outputs/.gitkeep
+frontend/data/
