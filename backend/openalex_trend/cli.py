@@ -15,12 +15,14 @@ import argparse
 import sys
 
 from . import diagnose, validation
-from .analysis import build_trend_table
+from .analysis import default_trend_table
 from .client import API_KEY_ENV, BudgetExceeded, OpenAlexClient, OpenAlexError
 from .config import DEFAULT_CONFIG, Config, load_config
-from .counts import fetch_all, plan_requests
-from .report import plot_ratio, write_csv, write_summary_json
+from .counts import fetch_denominators
+from .dataset import add_ratios, build_metrics
+from .report import plot_ratio, write_csv, write_dashboard_json, write_metrics_csv
 from .sampler import sample_all, write_samples
+from .works import fetch_topic_works, plan_requests
 
 
 def _announce(client: OpenAlexClient, reqs: list[dict], extra: int = 0) -> None:
@@ -32,7 +34,7 @@ def _announce(client: OpenAlexClient, reqs: list[dict], extra: int = 0) -> None:
 
 
 def cmd_plan(client: OpenAlexClient, cfg: Config, args) -> None:
-    reqs, extra = plan_requests(client, cfg)
+    reqs, extra = plan_requests(client, cfg)  # 未取得の語句は件数取得(各1リクエスト)だけ通信する
     print(client.describe_plan(reqs, extra).format())
 
 
@@ -41,10 +43,19 @@ def cmd_run(client: OpenAlexClient, cfg: Config, args) -> None:
     _announce(client, reqs, extra)
     if args.dry_run:
         return
-    denominator, counts = fetch_all(client, cfg)
-    table = build_trend_table(cfg, denominator, counts)
+    denominators = fetch_denominators(client, cfg)
+    topic_works, phrase_counts = {}, {}
+    for f in cfg.fields:  # 取得済みの語句はキャッシュから読むので、新しい語句の分だけ通信する
+        topic_works[f.label], phrase_counts[f.label] = fetch_topic_works(client, cfg, f)
+    metrics = add_ratios(cfg, build_metrics(cfg, topic_works), denominators)
     out = cfg.output_dir
-    for p in (write_csv(table, out), write_summary_json(cfg, table, out), plot_ratio(cfg, table, out)):
+    trend = default_trend_table(cfg, metrics, denominators)
+    for p in (
+        write_csv(trend, out),
+        write_metrics_csv(metrics, out),
+        write_dashboard_json(cfg, metrics, denominators, phrase_counts, out),
+        plot_ratio(cfg, trend, out),
+    ):
         print("出力:", p)
 
 
@@ -67,8 +78,8 @@ def cmd_diagnose(client: OpenAlexClient, cfg: Config, args) -> None:
 
 
 def cmd_sample(client: OpenAlexClient, cfg: Config, args) -> None:
-    if cfg.query_mode == "or":
-        _announce(client, [], extra=len(cfg.fields))
+    reqs, extra = plan_requests(client, cfg)
+    _announce(client, reqs, extra)
     if args.dry_run:
         return
     rows = sample_all(client, cfg)

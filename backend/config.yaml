@@ -5,9 +5,6 @@ openalex:
   base_url: https://api.openalex.org/works
   # タイトル検索のパラメータ名。旧形式 title.search は非推奨のため使わない
   search_param: search.title
-  # or: 語句をOR条件でまとめて1クエリ / union: 語句ごとに取得して work ID で和集合
-  # validate_queries で OR 条件が効いていないと判定されたら union に切り替える
-  query_mode: or
   rate_limit_per_sec: 30
   max_retries: 5
   timeout_sec: 30
@@ -16,13 +13,20 @@ openalex:
   daily_budget_usd: 1.0
 
 population:
-  # 分母: 同一 subfield の年別論文数。Statistics and Probability = subfields/2613
+  # 論文種別。null にすると種別で絞らない(論文以外の文書の増加が比率に混ざる)
+  work_type: article
+  year_from: 1990
+  year_to: 2026   # 今年は途中経過(ダッシュボードで注記する)
+  # 出現率の分母は画面で切り替える: all=全論文 / field=下の field / subfield=下の subfield
+  default_denominator: all
+  field_id: fields/26
+  field_name: Mathematics
   subfield_id: subfields/2613
   subfield_name: Statistics and Probability
-  year_from: 1990
-  year_to: 2025
 
 fields:
+  # トピックの追加: ここに項目を足すだけでよい。語句ごとの取得結果はキャッシュされ、
+  # 既存トピックは再検索されない(語句を足したときも、新しい語句の分だけ取得する)
   - label: SSM
     display_name: State space model
     phrases:

@@ -25,12 +25,15 @@ class Field:
 class Config:
     base_url: str
     search_param: str
-    query_mode: str
     rate_limit_per_sec: float
     max_retries: int
     timeout_sec: float
     cost_per_request_usd: float
     daily_budget_usd: float
+    work_type: str | None
+    default_denominator: str
+    oa_field_id: str
+    oa_field_name: str
     subfield_id: str
     subfield_name: str
     year_from: int
@@ -63,12 +66,15 @@ def load_config(path: Path | str = DEFAULT_CONFIG, root: Path = REPO_ROOT) -> Co
     cfg = Config(
         base_url=api["base_url"],
         search_param=api.get("search_param", "search.title"),
-        query_mode=api.get("query_mode", "or"),
         rate_limit_per_sec=float(api.get("rate_limit_per_sec", 30)),
         max_retries=int(api.get("max_retries", 5)),
         timeout_sec=float(api.get("timeout_sec", 30)),
         cost_per_request_usd=float(api.get("cost_per_request_usd", 0.0001)),
         daily_budget_usd=float(api.get("daily_budget_usd", 1.0)),
+        work_type=pop.get("work_type"),
+        default_denominator=pop.get("default_denominator", "all"),
+        oa_field_id=pop["field_id"],
+        oa_field_name=pop.get("field_name", pop["field_id"]),
         subfield_id=pop["subfield_id"],
         subfield_name=pop.get("subfield_name", pop["subfield_id"]),
         year_from=int(pop["year_from"]),
@@ -84,8 +90,8 @@ def load_config(path: Path | str = DEFAULT_CONFIG, root: Path = REPO_ROOT) -> Co
 
 
 def _validate(cfg: Config) -> None:
-    if cfg.query_mode not in ("or", "union"):
-        raise ValueError(f"query_mode は or / union のどちらか: {cfg.query_mode}")
+    if cfg.default_denominator not in ("all", "field", "subfield"):
+        raise ValueError("default_denominator は all / field / subfield のいずれか")
     if cfg.year_from > cfg.year_to:
         raise ValueError("year_from は year_to 以下にすること")
     if cfg.rate_limit_per_sec > 30:

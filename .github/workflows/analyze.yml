@@ -69,7 +69,7 @@ jobs:
         run: |
           mkdir -p _site/data
           cp -r frontend/. _site/
-          cp outputs/summary.json outputs/title_trend.csv outputs/title_trend_ratio.png _site/data/
+          cp outputs/dashboard.json outputs/title_trend.csv outputs/topic_metrics.csv outputs/title_trend_ratio.png _site/data/
       - uses: actions/upload-pages-artifact@v3
         if: inputs.command == 'run' && inputs.publish_pages
         with:

@@ -45,3 +45,15 @@ def build_trend_table(
             )
         )
     return pd.concat(frames, ignore_index=True)
+
+
+def default_trend_table(
+    cfg: Config, metrics: pd.DataFrame, denominators: dict[str, pd.Series]
+) -> pd.DataFrame:
+    """既定の分母(default_denominator)での比率・前年比・3年移動平均の表。"""
+    lv = cfg.default_denominator
+    counts = {
+        f.label: metrics[metrics["field"] == f.label].set_index("year")[f"count_{lv}"]
+        for f in cfg.fields
+    }
+    return build_trend_table(cfg, denominators[lv], counts)

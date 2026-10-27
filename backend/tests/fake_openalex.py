@@ -22,16 +22,28 @@ def make_corpus() -> list[dict]:
     """決め打ちの小さなコーパス(期待値を手計算できる大きさ)。"""
     works, n = [], 0
 
-    def add(title, year, subfield=TARGET_SUBFIELD):
+    def add(title, year, subfield=TARGET_SUBFIELD, wtype="article"):
         nonlocal n
         n += 1
+        field = FIELD_OF[subfield]
         works.append(
             {
                 "id": f"https://openalex.org/W{1000 + n}",
                 "title": title,
                 "publication_year": year,
-                "primary_topic": {"display_name": f"Topic {n % 3}", "subfield": {"id": subfield}},
-                "subfield": subfield,
+                "type": wtype,
+                "cited_by_count": (n * 3) % 11,
+                "counts_by_year": [
+                    {"year": 2022, "cited_by_count": n % 4},
+                    {"year": 2023, "cited_by_count": (n + 1) % 3},
+                ],
+                "fwci": None if n % 10 == 0 else ((n % 7) + 1) / 4,
+                "citation_normalized_percentile": {"value": 0.5, "is_in_top_10_percent": n % 5 == 0},
+                "primary_topic": {
+                    "display_name": f"Topic {n % 3}",
+                    "subfield": {"id": f"https://openalex.org/{subfield}"},
+                    "field": {"id": f"https://openalex.org/{field}"},
+                },
             }
         )
 
@@ -47,9 +59,13 @@ def make_corpus() -> list[dict]:
     for year, k in ((2020, 20), (2021, 20), (2022, 30), (2023, 30)):
         for i in range(k):
             add(f"Regression for sample {year}-{i}", year)
-    add("State space model in economics", 2021, OTHER_SUBFIELD)  # 別 subfield
+    add("State space model in economics", 2021, OTHER_SUBFIELD)  # 別 subfield(別 field)
     add("State space model of the past", 1980)  # 対象年の範囲外
     return works
+
+
+def short(url: str) -> str:
+    return url.split("openalex.org/")[-1]
 
 
 def _norm(text: str) -> str:
@@ -107,7 +123,11 @@ class FakeOpenAlex:
         for part in expr.split(","):
             key, _, val = part.partition(":")
             if key == "primary_topic.subfield.id":
-                works = [w for w in works if w["subfield"] == val]
+                works = [w for w in works if short(w["primary_topic"]["subfield"]["id"]) == val]
+            elif key == "primary_topic.field.id":
+                works = [w for w in works if short(w["primary_topic"]["field"]["id"]) == val]
+            elif key == "type":
+                works = [w for w in works if w["type"] == val]
             elif key == "publication_year":
                 lo, _, hi = val.partition("-")
                 works = [w for w in works if int(lo) <= w["publication_year"] <= int(hi or lo)]
@@ -142,7 +162,7 @@ class FakeOpenAlex:
         def keyof(w):
             if key == "publication_year":
                 return str(w["publication_year"]), str(w["publication_year"])
-            sub = w["subfield"]
+            sub = short(w["primary_topic"]["subfield"]["id"])
             if key == "primary_topic.subfield.id":
                 return f"https://openalex.org/{sub}", SUBFIELD_NAMES[sub]
             if key == "primary_topic.field.id":

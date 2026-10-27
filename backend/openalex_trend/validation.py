@@ -35,7 +35,7 @@ class FieldValidation:
 
 
 def planned_requests(cfg: Config) -> list[dict]:
-    reqs = [denominator_params(cfg)]
+    reqs = [denominator_params(cfg, "all")]
     for f in cfg.fields:
         reqs.append(count_params(cfg, or_query(f.phrases)))
         for p in f.phrases:
@@ -79,7 +79,7 @@ def validate_field(
 
 
 def validate_all(client: OpenAlexClient, cfg: Config) -> list[FieldValidation]:
-    denom_total = int(yearly_counts(client, denominator_params(cfg)).sum())
+    denom_total = int(yearly_counts(client, denominator_params(cfg, "all")).sum())
     return [validate_field(client, cfg, f, denom_total) for f in cfg.fields]
 
 
@@ -92,9 +92,9 @@ def format_report(results: list[FieldValidation]) -> str:
         lines += [f"    失敗: {m}" for m in r.failures]
         lines += [f"    警告: {m}" for m in r.warnings]
     if all(r.ok for r in results):
-        lines.append("判定: OR条件・フレーズ指定は意図どおり(query_mode: or のまま使える)")
+        lines.append("判定: OR条件・フレーズ指定は意図どおり")
     else:
-        lines.append("判定: query_mode を union に切り替えること(config.yaml)")
+        lines.append("判定: OR条件またはフレーズ指定が効いていない。run は語句ごとの取得なので、失敗した語句(上の失敗・警告)を個別に確認すること")
     return "\n".join(lines)
 
 

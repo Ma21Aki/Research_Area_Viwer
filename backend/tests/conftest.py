@@ -17,13 +17,16 @@ BASE_CONFIG = {
     "openalex": {
         "base_url": "https://api.openalex.org/works",
         "search_param": "search.title",
-        "query_mode": "or",
         "rate_limit_per_sec": 30,
         "max_retries": 5,
         "cost_per_request_usd": 0.0001,
         "daily_budget_usd": 1.0,
     },
     "population": {
+        "work_type": None,
+        "default_denominator": "all",
+        "field_id": "fields/26",
+        "field_name": "Mathematics",
         "subfield_id": "subfields/2613",
         "subfield_name": "Statistics and Probability",
         "year_from": 2020,
@@ -48,9 +51,11 @@ BASE_CONFIG = {
 
 @pytest.fixture
 def make_cfg(tmp_path):
-    def _make(**openalex_overrides):
+    def _make(extra_fields=(), population=None, **openalex_overrides):
         raw = yaml.safe_load(yaml.safe_dump(BASE_CONFIG))
         raw["openalex"].update(openalex_overrides)
+        raw["population"].update(population or {})
+        raw["fields"] += list(extra_fields)
         path = tmp_path / "config.yaml"
         path.write_text(yaml.safe_dump(raw, allow_unicode=True), encoding="utf-8")
         return load_config(path, root=tmp_path)
